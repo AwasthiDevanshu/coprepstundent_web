@@ -22,7 +22,9 @@
                 $url2 = 'https://backend.coprepedu.com/candidate/homepage/getLayout';
                 $url3 = 'https://backend.coprepedu.com/candidate/candidate/getCourseVideos';
                 $data["courseId"] = $_GET['courseId'];
+                $data["filters"]["searchString"] = $_GET['search'] ?? "";
                 $dataid = [];
+                print_r($data);
                 $response = callApi($url3, $data);
                 $response = json_decode($response,true);
                 $response2 = callApi($url2, $dataid);
@@ -37,13 +39,14 @@
 
                 $courseVideo = $response["data"]["courseVideo"]; ?>
 
-                <form action="layout.php" method="GET">
+                <form action="./layout.php" method="GET">
                     <div class="input-group mb-3">
                         <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Videos">
+                        <input type="hidden" name="courseId" value= "<?php echo $data['courseId'] ?>">
                         <button type="submit" class="btn btn-primary"> Search </button>
                     </div>
                 </form>
-
+                
                 <div class="main-cont"> 
 
                     <?php 
@@ -87,14 +90,10 @@
                                     </div>
                             
                                 <?php
-                                
-                                if (++$i == 8) break;
+                                // if (++$i == 8) break;
 
                             }
 
-                            $filtervalues = $_GET["search"];
-                            $data["filters"]["searchString"] = $filterValues;
-                            
                         }
 
                         else
