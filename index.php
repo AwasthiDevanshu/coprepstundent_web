@@ -14,6 +14,8 @@
 
 <body>
 
+<div class="main-cont">
+
 <?php
 
     include("login.php");
@@ -24,60 +26,58 @@
     $response = json_decode($response,true);
 
     $layout = $response["data"]["layout"];
-    $type = $layout["0"]["type"];
-    $title = $layout["0"]["title"];
-    $contentype = $layout["0"]["contentType"];
-    $content = $layout["0"]["content"];
+    foreach($layout as $row){
+        $type = $row["type"];
+        $title = $row["title"];
+        $contentype = $row["contentType"];
+        $content = $row["content"];
 
-
-
-    $i = 0;
-    
-?>
-    
-    <div class="main-cont">
-
-    <?php 
-    
-    foreach($content as $key => $value)
-    { ?>
-
+        echo "<div class ='row'>";
+        echo $title;
+        foreach($content as $key => $value)
+        { ?>            
             <div class="cont">
-
-                <img src="<?php echo $value["thumbnail"]; ?>" class="thumb">
-                <h1 class="course_name"> <?php echo $value["courseName"]; ?> </h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="col price_cont">
-                            <p class="price"> Rs. <strike> <?php echo $value["mrp"]; ?> </strike> &nbsp; <b><?php echo $value["price"]; ?></b></p>
-                        </div>
-                        <div class="col btn_cont">
-                            <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
-                                <?php
-                                    if($value["purchased"] == 1)
-                                    {
-                                        echo " View Videos ";
-                                    }
-
-                                    else
-                                    {
-                                        echo "Buy Now";
-                                    }
-                                ?> 
-                            </button></a>
+                    <img src="<?php echo $value["thumbnail"]; ?>" class="thumb">
+                    <h1 class="course_name"> <?php echo $value["courseName"]; ?> </h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col price_cont">
+                                <p class="price"> Rs. <strike> <?php echo $value["mrp"]; ?> </strike> &nbsp; <b><?php echo $value["price"]; ?></b></p>
+                            </div>
+                            <div class="col btn_cont">
+                                <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
+                                    <?php
+                                        if($value["purchased"] == 1)
+                                        {
+                                            echo " View Videos ";
+                                        }
+    
+                                        else
+                                        {
+                                            echo "Buy Now";
+                                        }
+                                    ?> 
+                                </button></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-            </div>
     
-    <?php
+                </div>
         
-        // if (++$i == 4) break;
+        <?php
+
+            // if (++$i == 4) break;
+    
+        }
+        echo "  </div>";
 
     }
-
+    
 ?>
+    
+
+    
+
 
 </div>
 
