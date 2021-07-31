@@ -83,18 +83,21 @@ body
     background-color:rgba(0, 0, 0, 0.651);
 }
 
-.register_text
+.regiester_btn
 {
-    color: white;
-    text-decoration: none;
-    font-size: 20pt;
+    background-color: white;
+    color: black;
+    padding: 15px 30px;
+    border: 0px;
+    border-radius: 100px;
     font-weight: 600;
 }
 
-.register_text:hover
+.regiester_btn:Hover
 {
-    text-decoration: underline;
+    background-color: black;
     color: white;
+
 }
 
 @keyframes gradient 
