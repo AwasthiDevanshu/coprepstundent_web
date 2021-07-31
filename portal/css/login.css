@@ -1,0 +1,114 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: noto sans jp;
+}
+
+body
+{
+    box-sizing: border-box;
+    background: linear-gradient(-45deg, #1c0099, #e73c7e, #4d00a5, #6e0085);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+.main_cont
+{
+    width: 500px;
+    margin: auto;
+    padding-top: 110px;
+}
+
+.log_cont
+{
+    background-color: rgba(0, 0, 0, 0.39);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: 03px 03px 10px 0px rgba(0, 0, 0, 0.404);
+    margin-bottom: 10px;
+}
+
+.login_img
+{
+    width: 140px;
+    height: auto;
+    margin-bottom: 20px;
+    
+}
+
+.emailid, .password
+{
+    height: 50px;
+}
+
+.forgot_remeber
+{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.remember_label
+{
+    color: white;
+}
+
+.forgor_password
+{
+    color: white;
+    text-decoration: none;
+}
+
+.forgor_password:hover
+{
+    text-decoration: underline;
+    color: white;
+}
+
+.login_btn
+{
+    width:100%;
+    height:50px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.418);
+    color: white;
+}
+
+.login_btn:hover
+{
+    background-color:rgba(0, 0, 0, 0.651);
+}
+
+.register_text
+{
+    color: white;
+    text-decoration: none;
+    font-size: 20pt;
+    font-weight: 600;
+}
+
+.register_text:hover
+{
+    text-decoration: underline;
+    color: white;
+}
+
+@keyframes gradient 
+{
+	0% 
+    {
+		background-position: 0% 50%;
+	}
+	50%
+    {
+		background-position: 100% 50%;
+	}
+	100%
+    {
+		background-position: 0% 50%;
+	}
+}
