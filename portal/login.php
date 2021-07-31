@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="forgot_pass_cont">
-                            <a href="#" class="forgor_password"> Forgot Password </a>
+                            <a href="forget-password.php" class="forgor_password"> Forgot Password </a>
                         </div>
                     </div>
 
