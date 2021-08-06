@@ -1,6 +1,6 @@
 <?php
 include_once("callApi.php");
-include_once("Constant.php");
+include_once("../Constant.php");
 error_reporting(0);
 
 if (isset($_POST["submit"])) {

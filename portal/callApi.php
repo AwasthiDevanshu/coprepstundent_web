@@ -3,6 +3,9 @@
 function callApi($url, $data)
 {
     $curl = curl_init();
+    if(session_status() !== PHP_SESSION_ACTIVE){
+        session_start();
+    }
     $requestBody["data"] = $data;
     $requestBody["token"] = $_SESSION["authtoken"] ?? "";
     curl_setopt_array($curl, array(
@@ -16,15 +19,4 @@ function callApi($url, $data)
     return $response;
 }
 
-$url = 'https://backend.coprepedu.com/candidate/candidate/candidateLogin';
-$data["username"] = "7836080862";
-$data["password"] = "yusnu";
-$data["companyId"] = "27";
-$response = callApi($url, $data);
-$response = json_decode($response, true);
 
-if (!empty($response["data"]["authToken"])) {
-    $_SESSION["authtoken"] = $response["data"]["authToken"];
-} else {
-    echo "Fail Login <br>";
-}
