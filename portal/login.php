@@ -7,7 +7,7 @@ if (isset($_POST["submit"])) {
     if (!empty($_POST["username"]) || !empty($_POST["password"])) {
         $data["username"] = $_POST["username"];
         $data["password"] = $_POST["password"];
-        $data["companyId"] = COMAPNYID;
+        $data["companyId"] = COMPANYID;
         $response = callApi(LOGIN_URL, $data);
         $response = json_decode($response, true);
 
