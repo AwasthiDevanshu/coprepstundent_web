@@ -34,7 +34,13 @@ if (isset($_POST["submit"])) {
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div> <?php } ?>
 
-        <?php if (isset($response["error"]) && $response["error"] == 0) { ?>
+            <?php if(isset($_GET['error'])){ ?>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Alert!</strong> <?php echo $_GET['error']; ?>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div> <?php } ?>
+
+            <?php if(isset($response["error"]) && $response["error"] == 0){ ?>
             <div class="alert alert-success alert-dismissible fade show" role="success">
                 <strong>Success!</strong> <?php echo $response["message"]; ?><br>
                 <p> Please, Check you Spam folder for ID & Password then Try Login again. </p>
@@ -43,12 +49,12 @@ if (isset($_POST["submit"])) {
 
         <div class="log_cont">
 
-            <h1 style="color:white;font-weight:700;text-align:center;margin-bottom: 30px; font-size:22pt;"> Forget Passoword </h1>
-            <form action="" method="POST">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
-                    <input type="email" name="email" class="form-control emailid" placeholder="Enter Registered Email">
-                </div>
+                <h1 style="color:white;font-weight:700;text-align:center;margin-bottom: 30px; font-size:22pt;"> Forget Passoword </h1>
+                <form action="" method="POST">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                        <input type="email" name="email" class="form-control userid" placeholder="Enter Registered Email">
+                    </div>
 
                 <div class="login">
                     <button type="submit" name="submit" class="login_btn">Send Password to Email</button>
