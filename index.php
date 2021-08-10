@@ -42,11 +42,17 @@
                                 <p class="price"> Rs. <strike> <?php echo $value["mrp"]; ?> </strike> &nbsp; <b><?php echo $value["price"]; ?></b></p>
                             </div>
                             <div class="col btn_cont">
-                                <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
                                         <?php
                                         if ($value["purchased"] == 1) {
+                                            ?>
+                                        <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
+<?php
                                             echo " View Videos ";
                                         } else {
+                                            ?>
+                                            
+                                        <a href="<?php echo ANDROID_APP_LINK ?>"><button class="buy_now">
+                                            <?php
                                             echo "Buy Now";
                                         }
                                         ?>
