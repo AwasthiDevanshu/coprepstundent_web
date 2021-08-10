@@ -18,9 +18,8 @@
 
         include("login.php");
 
-        $url2 = 'https://backend.coprepedu.com/candidate/homepage/getLayout';
         $data = [];
-        $response = callApi($url2, $data);
+        $response = callApi(Url::LAYOUT_URL, $data);
         $response = json_decode($response, true);
 
         $layout = $response["data"]["layout"];
@@ -42,21 +41,21 @@
                                 <p class="price"> Rs. <strike> <?php echo $value["mrp"]; ?> </strike> &nbsp; <b><?php echo $value["price"]; ?></b></p>
                             </div>
                             <div class="col btn_cont">
+                                <?php
+                                if ($value["purchased"] == 1) {
+                                ?>
+                                    <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
                                         <?php
-                                        if ($value["purchased"] == 1) {
-                                            ?>
-                                        <a href="layout.php?courseId=<?php echo $value["courseId"]; ?>"><button class="buy_now">
-<?php
-                                            echo " View Videos ";
-                                        } else {
-                                            ?>
-                                            
-                                        <a href="<?php echo Constant::ANDROID_APP_LINK ?>"><button class="buy_now">
-                                            <?php
-                                            echo "Buy Now";
-                                        }
+                                        echo " View Videos ";
+                                    } else {
                                         ?>
-                                    </button></a>
+
+                                            <a href="<?php echo Constant::ANDROID_APP_LINK ?>"><button class="buy_now">
+                                                <?php
+                                                echo "Buy Now";
+                                            }
+                                                ?>
+                                                </button></a>
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@ require_once("assets/phpclasses/callApi.php");
 
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["username"]) || !empty($_POST["password"])) {
-		$url = 'https://backend.coprepedu.com/candidate/candidate/candidateLogin';
+		$url = Url::LOGIN_URL;
 		$data["username"] = $_POST["username"];
 		$data["password"] = $_POST["password"];
 		$data["companyId"] = "27";

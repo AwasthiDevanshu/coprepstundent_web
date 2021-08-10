@@ -1,4 +1,7 @@
 <?php
+/**
+ * File to keep track of Api Urls
+ */
 class  Url {
     
     const LOGIN_URL = Constant::BASE_URL."candidate/candidate/candidateLogin";
