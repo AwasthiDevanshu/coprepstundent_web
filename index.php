@@ -51,7 +51,7 @@
                                         } else {
                                             ?>
                                             
-                                        <a href="<?php echo ANDROID_APP_LINK ?>"><button class="buy_now">
+                                        <a href="<?php echo Constant::ANDROID_APP_LINK ?>"><button class="buy_now">
                                             <?php
                                             echo "Buy Now";
                                         }
