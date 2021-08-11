@@ -1,0 +1,132 @@
+.buy_course_thumb {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.course_name {
+    font-size: 25pt;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.icon_cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.lecture_icon {
+    background-color: rgb(194, 255, 194);
+    color: green;
+    border: 1px solid green;
+    border-radius: 100px;
+    margin-right: 20px;
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+}
+
+.lecture_icon p {
+    line-height: 10px;
+    margin: 0px;
+    font-weight: 600;
+}
+
+.duration_icon {
+    background-color: rgb(255, 206, 194);
+    color: rgb(255, 94, 0);
+    border: 1px solid rgb(255, 94, 0);
+    border-radius: 100px;
+    width: 250px;
+    text-align: center;
+    padding: 15px;
+}
+
+.duration_icon p {
+    line-height: 10px;
+    margin: 0px;
+    font-weight: 600;
+}
+
+.description_box {
+    color: black;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.bottom_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 1210px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.158);
+    border-radius: 5px;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 15px;
+}
+
+.demo_btn {
+    color: white !important;
+    width: 200px;
+    height: 50px;
+}
+
+.buy_btn {
+    color: white !important;
+    width: 200px;
+    height: 50px;
+}
+
+.course_price h3 {
+    color: black;
+    font-weight: 700;
+}
+
+.mobile_bottom {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .buy_course_thumb {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    .lecture_icon {
+        font-size: 12px;
+        width: 150px;
+        padding: 10px;
+        margin-right: 10px;
+    }
+    .duration_icon {
+        font-size: 12px;
+        width: 180px;
+        padding: 10px;
+    }
+    .bottom_btn {
+        display: none;
+    }
+    .mobile_bottom {
+        display: flex;
+        width: 360px;
+    }
+    .demo_btn {
+        width: 150px;
+    }
+    .buy_btn {
+        width: 150px;
+    }
+    .course_price h3 {
+        text-align: center;
+    }
+}

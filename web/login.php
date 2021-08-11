@@ -1,8 +1,7 @@
 <?php
+require_once("assets/phpclasses/callApi.php");
 
 $error = "";
-session_start();
-require_once("assets/phpclasses/callApi.php");
 
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["username"]) || !empty($_POST["password"])) {
@@ -15,9 +14,8 @@ if (isset($_POST["submit"])) {
 		$response = json_decode($response, true);
 
 		if (!empty($response["data"]["authToken"])) {
-
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
-
+			
 			header("Location: index.php");
 			exit();
 		} else {
