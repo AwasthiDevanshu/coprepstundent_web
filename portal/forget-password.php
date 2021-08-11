@@ -6,8 +6,8 @@ error_reporting(0);
 if (isset($_POST["submit"])) {
     if (!empty($_POST["email"])) {
         $data["email"] = $_POST["email"];
-        $data["companyId"] = COMPANYID;
-        $response = callApi(FORGET_PASS, $data);
+        $data["companyId"] = Constant::COMPANYID;
+        $response = callApi(Url::FORGET_PASS, $data);
         $response = json_decode($response, true);
     } else {
         header("Location: forget-password.php?error=Please Enter Registered Email ID");

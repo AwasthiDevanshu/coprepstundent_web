@@ -35,7 +35,7 @@
 
                             if(isset($_SESSION["authtoken"])){
 
-                            $url = 'https://backend.coprepedu.com/candidate/homepage/getLayout';
+                            $url =  Url::LAYOUT_URL;
                             $data[] = "";
                             $callApi = new CallApi();
                             $response = $callApi -> call($url, $data);

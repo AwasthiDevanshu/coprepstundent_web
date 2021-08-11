@@ -17,8 +17,8 @@
 
         include("login.php");
 
-        $url2 = 'https://backend.coprepedu.com/candidate/homepage/getLayout';
-        $url3 = 'https://backend.coprepedu.com/candidate/candidate/getCourseVideos';
+        $url2 = Url::LAYOUT_URL;
+        $url3 = Url::COURSE_VIDEO_LIST;
         $data["courseId"] = $_GET['courseId'];
         $data["filters"]["searchString"] = $_GET['search'] ?? "";
         $dataid = [];
