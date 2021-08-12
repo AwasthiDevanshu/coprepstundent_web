@@ -1,5 +1,6 @@
 <?php
 require_once("assets/phpclasses/callApi.php");
+require_once("Constant.php");
 
 $error = "";
 
@@ -16,8 +17,7 @@ if (isset($_POST["submit"])) {
 		if (!empty($response["data"]["authToken"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
 			
-			header("Location: index.php");
-			exit();
+			exit(header("Location: index.php"));
 		} else {
 			header("Location: login.php?error=Incorrect Username or Password");
 			exit();
