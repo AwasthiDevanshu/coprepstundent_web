@@ -1,5 +1,6 @@
 <?php
     require_once("assets/phpclasses/callApi.php");
+    require_once("Constant.php");
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +11,9 @@
         <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
         <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
         <link rel="stylesheet" type="text/css" href="assets/css/videopage.css">
+        <script>
+            document.getElementsByTagName("html")[0].className += " js";
+        </script>
     </head>
 
     <body class="app">
@@ -30,59 +34,87 @@
                 
                 if(isset($_SESSION["authtoken"])){
 
-                    $url = 'https://backend.coprepedu.com/candidate/homepage/getLayout';
-                    $url2 = 'https://backend.coprepedu.com/candidate/candidate/getCourseVideos';
+                    $url = Url::COURSE_VIDEO;
                     $data["courseId"] = $_GET['courseId'];
-                    $dataid = [];
                     $callApi = new CallApi();
-                    $response = $callApi -> call($url, $dataid);
-                    $response = json_decode($response,true);
-                    $response2 = $callApi -> call($url2, $data);
+                    $response2 = $callApi -> call($url, $data);
                     $response2 = json_decode($response2,true);
-
-                    $layout = $response["data"]["layout"];
-                    $content = $layout["0"]["content"];
-
-
-
-                    foreach ($content as $key1 => $value1)
-                    {
-                        $purchaseid = $value1["purchased"];
-                    }
+             
+                    $purchasedid = $_SESSION["courseMap"][$data["courseId"]]["purchased"]??null;
+                    $coursename = $_SESSION["courseMap"][$data["courseId"]]["courseName"]??null;
+                    $description = $_SESSION["courseMap"][$data["courseId"]]["description"]??null;
+                    $thumbnail = $_SESSION["courseMap"][$data["courseId"]]["thumbnail"]??null;
+                    $lectureCount = $_SESSION["courseMap"][$data["courseId"]]["lectureCount"]??null;
+                    $duration = $_SESSION["courseMap"][$data["courseId"]]["duration"]??null;
+                    $price = $_SESSION["courseMap"][$data["courseId"]]["price"]??null;
+                    $mrp = $_SESSION["courseMap"][$data["courseId"]]["mrp"]??null;
 
                     // echo "<pre>";
                     // print_r($response);
                     // echo "</pre>";
 
-                    if($purchaseid == 1) { ?>
+                    if($purchasedid == null)
+                    {
+                        echo "404 Not Found";
+                        exit();
+                    }
+
+                    if($purchasedid == 1) { ?>
 
                     <div class="container-xl">
                         <h1 class="app-page-title"> Video Course </h1>
                     </div>
-                    
+
+                        <?php
+                        
+                            $url2 = "https://backend.coprepedu.com/course/course/getCourseCategories";
+                            $data2["courseId"] = $_GET['courseId'];
+                            $callApi = new CallApi();
+                            $response = $callApi -> call($url2, $data2);
+                            $response = json_decode($response,true);
+
+                            // echo "<pre>";
+                            // print_r($response["data"]);
+                            // echo "</pre>";
+
+                            $categoryList = $response["data"]["categoryList"];
+                        
+                        ?>
+
+                        <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
+                        <h1 class="course_name"> <?php echo $coursename; ?> </h1>
+                        <div class="icon_cont">
+                            <div class="lecture_icon">
+                                <p> <i class="fas fa-stream"></i> <?php echo $lectureCount; ?> Lectures </p>
+                            </div>
+                            <div class="duration_icon">
+                                <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
+                            </div>
+                        </div>
+
                     <div class="row g-4">
                     </div>
                     <?php } ?>
 
-                    <?php if($purchaseid == 0) { ?>
+                    <?php if($purchasedid == 0) { ?>
 
                     <div class="container-xl">
                         <h1 class="app-page-title"> Buy Course </h1>
 
-                        <img src="assets/images/background/background-1.jpg" class="buy_course_thumb"> <br>
-                        <h1 class="course_name"> <?php echo $_SESSION["courseName"] ?> </h1>
+                        <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
+                        <h1 class="course_name"> <?php echo $coursename; ?> </h1>
                         <div class="icon_cont">
                             <div class="lecture_icon">
-                                <p> <i class="fas fa-stream"></i> 360 Lectures </p>
+                                <p> <i class="fas fa-stream"></i> <?php echo $lectureCount; ?> Lectures </p>
                             </div>
                             <div class="duration_icon">
-                                <p> <i class="fas fa-clock"></i> 60mins. Per Lectures </p>
+                                <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
                             </div>
                         </div>
                         <div class="description_box">
                             <p> 
-                                <?php if(!empty($_SESSION["description"])) { 
-                                echo $_SESSION["description"];}
+                                <?php if(!empty($description)) { 
+                                echo $description;}
                                 else{
                                     echo " No Description Available ";
                                 } ?> </p>
@@ -94,7 +126,7 @@
                             </div>
 
                             <div class="course_price">
-                                <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. 7000 </strike>  Rs. 6000/- </h3>
+                                <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike>  Rs. <?php echo $price; ?>/- </h3>
                             </div>
 
                             <div class="buy_now">
@@ -104,7 +136,7 @@
 
                         <div class="bottom_btn mobile_bottom">
                             <div class="course_price">
-                                <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. 7000 </strike>  Rs. 6000/- </h3>
+                                <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike>  Rs. <?php echo $price; ?>/- </h3>
                             </div>
 
                             <div class="demo_video">
@@ -126,17 +158,14 @@
             <?php include ("includes/footer.php"); ?>
         </div>
 
-        <script src="assets/plugins/popper.min.js"></script>
-        <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- Charts JS -->
-        <script src="assets/plugins/chart.js/chart.min.js"></script> 
-        <script src="assets/js/index-charts.js"></script> 
-        
-        <!-- Page Specific JS -->
-        <script src="assets/js/app.js"></script>
         <?php
 	    include("assets/scripts.php");
         ?>
+
+    <!-- cd-tabs -->
+    <script src="assets/js/util.js"></script>
+    <!-- util functions included in the CodyHouse framework -->
+    <script src="assets/js/main.js"></script>
+
     </body>
 </html>
