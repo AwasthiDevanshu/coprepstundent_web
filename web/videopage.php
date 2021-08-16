@@ -102,10 +102,10 @@ require_once("Constant.php");
                             $activeKey = $_GET["activeKey"]??0;
                             foreach ($categoryList as $key => $category) {
                                 $active  = 0;
-                                $panediv =  '<div id="'."course".$key.'" class="tab-pane fade">';
+                                $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show">';
 
                                 if ($key == $activeKey) {
-                                    $panediv =  '<div id="'."course".$key.'" class="tab-pane fade in active">';
+                                    $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show in active">';
 
                                     $active = 1;
                                 } ?>
