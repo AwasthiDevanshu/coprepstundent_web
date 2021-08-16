@@ -109,7 +109,7 @@ require_once("Constant.php");
 
                                     $active = 1;
                                 } ?>
-                                <li class='<?php echo  $active = 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo "course".$key.'">'. $category["categoryName"]?></a></li>
+                                <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo "course".$key.'">'. $category["categoryName"]?></a></li>
                             <?php
                                 $htmlSubCatList .= $panediv;
 
