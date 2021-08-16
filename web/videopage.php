@@ -92,6 +92,7 @@ require_once("Constant.php");
                                 <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
                             </div>
                         </div>
+                        <div class="container">
                         <ul class="nav nav-pills">
                             <?php
                             $htmlSubCatList =  "";
@@ -123,6 +124,7 @@ require_once("Constant.php");
 <div class="tab-content">
                         <?php echo $htmlSubCatList; ?>
                         </div>
+        </div>
                         <div class="row g-4">
                         </div>
                     <?php } ?>
