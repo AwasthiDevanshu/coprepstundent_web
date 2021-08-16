@@ -116,7 +116,7 @@ require_once("Constant.php");
                                 $SubCatList  = $category["subCategory"];
                                 $subCAthtml = '';
                                 foreach ($SubCatList as $key2 => $subCat) {
-                                    $subCAthtml .= "<div id  = '" . $subCat['subCategoryId'] . "'>" . $subCat['subCategory'] . "</div>";
+                                    $subCAthtml .= "<div  class='folder'>" ."<span>". $subCat['subCategory'] . "</span></div>";
                                 }
                                 $htmlSubCatList .= $subCAthtml;
                                 $htmlSubCatList .= ' </div>';
