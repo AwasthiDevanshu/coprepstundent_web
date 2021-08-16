@@ -98,14 +98,14 @@ require_once("Constant.php");
                             $activeKey = $_GET["activeKey"]??0;
                             foreach ($categoryList as $key => $category) {
                                 $active  = 0;
-                                $panediv =  '<div id="'.$key.'" class="tab-pane fade">';
+                                $panediv =  '<div id="'."course".$key.'" class="tab-pane fade">';
 
                                 if ($key == $activeKey) {
-                                    $panediv =  '<div id="'.$key.'" class="tab-pane fade in active">';
+                                    $panediv =  '<div id="'."course".$key.'" class="tab-pane fade in active">';
 
                                     $active = 1;
                                 } ?>
-                                <li class='<?php echo  $active = 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo $key.'">'. $category["categoryName"]?></a></li>
+                                <li class='<?php echo  $active = 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo "course".$key.'">'. $category["categoryName"]?></a></li>
                             <?php
                                 $htmlSubCatList .= $panediv;
 
