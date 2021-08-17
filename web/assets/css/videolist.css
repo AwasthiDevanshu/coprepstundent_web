@@ -1,0 +1,10 @@
+.video_cont {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.video_thumb {
+    width: 100%;
+    height: 100px;
+}

@@ -66,8 +66,7 @@
                                         <h1> <?php echo $title; ?> </h1>
                                     </div>
                                     
-                                    <?php
-                                        
+                                    <?php   
                                         foreach($content as $key => $value)
                                         {   
                                              $_SESSION["courseMap"][$value["courseId"]]["purchased"] = $value["purchased"];

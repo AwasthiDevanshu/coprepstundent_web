@@ -1,6 +1,11 @@
 <?php
-require_once("assets/phpclasses/callApi.php");
-require_once("Constant.php");
+    require_once("assets/phpclasses/callApi.php");
+    require_once("Constant.php");
+    if(!isset($_SESSION["authtoken"]))
+    {
+        header("Location: login.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +13,9 @@ require_once("Constant.php");
 
 <head>
     <title>Web Dashboard</title>
+ <!--this one-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -85,27 +93,6 @@ require_once("Constant.php");
                         echo "<pre>";
                         print_r($categoryList);
                         echo "</pre>";
-
-
-                        while($categoryList)
-                        {
-                            if($count == 0)
-                            {
-                                $tab_menu .='
-                                <li class="active"> <a href="#'.$categoryList["id"].'" data-toggle="tab">'.$categoryList["categoryName"].' </a> </li>
-                                ';
-                            }
-
-                            else
-                            {
-                                $tab_menu .='
-                                <li> <a href="#'.$categoryList["id"].'" data-toggle="tab">'.$categoryList["categoryName"].' </a> </li>
-                                ';
-                            }
-
-                            $count++;
-                        }
-
                         ?>
 
                         <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
@@ -118,11 +105,41 @@ require_once("Constant.php");
                                 <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
                             </div>
                         </div>
+                        <div class="container">
+                            <ul class="nav nav-pills">
+                                <?php
+                                $htmlSubCatList =  "";
+                                $activeKey = $_GET["activeKey"]??0;
+                                foreach ($categoryList as $key => $category) {
+                                    $active  = 0;
+                                    $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show">';
 
-                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                            <?php echo $tab_menu; ?>
-                        </ul>
+                                    if ($key == $activeKey) {
+                                        $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show in active">';
 
+                                        $active = 1;
+                                    } ?>
+                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo "course".$key; ?>"> <?php echo $category["categoryName"]; ?></a></li>
+                                <?php
+                                    $htmlSubCatList .= $panediv;
+
+                                    $SubCatList  = $category["subCategory"];
+                                    $subCAthtml = '';
+                                    foreach ($SubCatList as $key2 => $subCat) {
+                                        $subCAthtml .= "<div  class='folder'>" .'<span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos )</span></div>";
+                                    }
+                                    $htmlSubCatList .= $subCAthtml;
+                                    $htmlSubCatList .= ' </div>';
+                                } ?>
+                            </ul>
+
+                            
+                            <div class="tab-content">
+                                <?php echo $htmlSubCatList; ?>
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                        </div>
                     <?php } ?>
 
                         <?php if ($purchasedid == 0) 
