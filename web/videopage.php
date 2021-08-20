@@ -52,6 +52,11 @@
                     $response2 = $callApi->call($url, $data);
                     $response2 = json_decode($response2, true);
 
+                    if(!empty($_GET['courseId']))
+                    {
+                        $_SESSION["getcourseId"] = $_GET["courseId"];
+                    }
+
                     $purchasedid = $_SESSION["courseMap"][$data["courseId"]]["purchased"] ?? null;
                     $coursename = $_SESSION["courseMap"][$data["courseId"]]["courseName"] ?? null;
                     $description = $_SESSION["courseMap"][$data["courseId"]]["description"] ?? null;
@@ -90,9 +95,9 @@
                         $tab_menu="";
                         $categoryList = $response["data"]["categoryList"];
 
-                        echo "<pre>";
-                        print_r($categoryList);
-                        echo "</pre>";
+                        // echo "<pre>";
+                        // print_r($categoryList);
+                        // echo "</pre>";
                         ?>
 
                         <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
@@ -126,7 +131,7 @@
                                     $SubCatList  = $category["subCategory"];
                                     $subCAthtml = '';
                                     foreach ($SubCatList as $key2 => $subCat) {
-                                        $subCAthtml .= "<div  class='folder'>" .'<span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos )</span></div>";
+                                        $subCAthtml .= '<a href= "videolist.php?catId='.$subCat['subCategoryId'].'"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos)</span></div></a>";
                                     }
                                     $htmlSubCatList .= $subCAthtml;
                                     $htmlSubCatList .= ' </div>';

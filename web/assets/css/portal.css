@@ -4147,23 +4147,9 @@ fieldset:disabled .btn {
     font-weight: 500;
 }
 
-.app-nav:active {
-    color: #15a362;
-    background: #edfdf6;
-    border-left: 3px solid #15a362 !important;
-    font-weight: 500;
-}
-
-.app-nav:focus {
-    color: #15a362;
-    background: #edfdf6;
-    border-left: 3px solid #15a362 !important;
-    font-weight: 500;
-}
-
-.selected {
-    color: #15a362;
-    background: #edfdf6;
+.selected_nav {
+    color: #15a362 !important;
+    background: #edfdf6 !important;
     border-left: 3px solid #15a362 !important;
     font-weight: 500;
 }

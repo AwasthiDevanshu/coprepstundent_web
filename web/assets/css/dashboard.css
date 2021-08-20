@@ -6,3 +6,52 @@
 .g-4 {
     padding: 12px;
 }
+
+#course_price {
+    color: green !important;
+    font-size: 18pt;
+    font-weight: 700;
+}
+
+#course_mrp {
+    color: grey !important;
+    font-size: 13pt;
+}
+
+#course_discount {
+    color: red !important;
+    font-size: 13pt;
+    font-weight: 700;
+}
+
+.new_course {
+    width: 80px;
+    border-radius: 3px;
+    text-align: center;
+    padding-bottom: 3px;
+    background-color: red;
+    color: white;
+    margin-bottom: 10px;
+    animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: rgb(0, 68, 255);
+    }
+}
+
+@media screen and (max-width: 468px) {
+    #course_price {
+        font-size: 13pt;
+    }
+    #course_mrp {
+        font-size: 11pt;
+    }
+    #course_discount {
+        font-size: 11pt;
+    }
+}
