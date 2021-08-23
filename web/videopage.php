@@ -111,6 +111,7 @@
                             </div>
                         </div>
                         <div class="container">
+                        <h4 style="margin-top:30px;margin-left:5px;"> Select Video Category </h4>
                             <ul class="nav nav-pills">
                                 <?php
                                 $htmlSubCatList =  "";
@@ -131,15 +132,15 @@
                                     $SubCatList  = $category["subCategory"];
                                     $subCAthtml = '';
                                     foreach ($SubCatList as $key2 => $subCat) {
-                                        $subCAthtml .= '<a href= "videolist.php?catId='.$subCat['subCategoryId'].'"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos)</span></div></a>";
+                                        $subCAthtml .= '<a href= "videolist.php?catId='.$subCat['subCategoryId'].'"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
                                     }
                                     $htmlSubCatList .= $subCAthtml;
                                     $htmlSubCatList .= ' </div>';
                                 } ?>
                             </ul>
 
-                            
                             <div class="tab-content">
+                                <h4 style="margin-top: 20px;margin-left:5px;margin-bottom:20px;"> Videos </h4>
                                 <?php echo $htmlSubCatList; ?>
                             </div>
                         </div>

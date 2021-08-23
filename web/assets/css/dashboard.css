@@ -31,8 +31,10 @@
     padding-bottom: 3px;
     background-color: red;
     color: white;
-    margin-bottom: 10px;
     animation: mymove 5s infinite;
+    margin-top: -160px;
+    float: right;
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.664);
 }
 
 @keyframes mymove {
@@ -53,5 +55,10 @@
     }
     #course_discount {
         font-size: 11pt;
+    }
+    .new_course {
+        margin-top: -100px;
+        width: 50px;
+        font-size: 10pt;
     }
 }
