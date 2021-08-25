@@ -98,6 +98,28 @@
 
 .nav {
     margin-top: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    display: inline-block !important;
+    padding: 10px 0px;
+}
+
+.nav::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.nav::-webkit-scrollbar {
+    height: 15px;
+    background-color: #F5F5F5;
+}
+
+.nav::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 214, 11);
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    border-radius: 10px;
 }
 
 .nav li {
@@ -108,6 +130,7 @@
     border-radius: 100px;
     border: 1px solid grey;
     margin-bottom: 10px;
+    display: inline-block;
 }
 
 .nav li a {
@@ -173,20 +196,26 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .nav {
+        display: inline-block !important;
+        overflow-x: auto;
+        white-space: nowrap;
+        width: 100%;
+    }
     .buy_course_thumb {
         width: 100%;
-        height: 300px;
+        height: auto;
         object-fit: cover;
     }
     .lecture_icon {
         font-size: 12px;
-        width: 150px;
+        width: 45%;
         padding: 10px;
         margin-right: 10px;
     }
     .duration_icon {
         font-size: 12px;
-        width: 180px;
+        width: 45%;
         padding: 10px;
     }
     .bottom_btn {
@@ -194,18 +223,33 @@
     }
     .mobile_bottom {
         display: flex;
-        width: 360px;
+        width: 95%;
+        margin-left: 10px;
+    }
+    .demo_video {
+        width: 50%;
+    }
+    .buy_now {
+        width: 45%;
+        margin-right: 10px;
     }
     .demo_btn {
-        width: 150px;
+        width: 100%;
     }
     .buy_btn {
-        width: 150px;
+        width: 100%;
     }
     .course_price h3 {
         text-align: center;
     }
+    .course_price {
+        width: 100%;
+        margin-bottom: 10px;
+    }
     .app-content {
         padding: 15px !important;
+    }
+    .description_box {
+        margin-bottom: 120px;
     }
 }

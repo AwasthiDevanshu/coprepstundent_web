@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
 
 		if (!empty($response["data"]["authToken"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
-			
+
 			exit(header("Location: index.php"));
 		} else {
 			header("Location: login.php?error=Incorrect Username or Password");
@@ -55,7 +55,7 @@ if (isset($_POST["submit"])) {
 		<div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 			<div class="d-flex flex-column align-content-end">
 				<div class="app-auth-body mx-auto">
-					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/app-logo.svg" alt="logo"></a></div>
+					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/Logo New.png" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-5">Log in to Portal</h2>
 					<div class="auth-form-container text-start">
 
@@ -68,12 +68,21 @@ if (isset($_POST["submit"])) {
 						<form action="" method="POST" class="auth-form login-form">
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Username</label>
-								<input id="signin-email" name="username" type="text" class="form-control signin-email" placeholder="Username">
+								<input id="signin-email" name="username" type="text" value="<?php if(isset($_POST["username"])){echo $_POST["username"];} ?>" class="form-control signin-email" placeholder="Username">
 							</div>
 							<!--//form-group-->
 							<div class="password mb-3">
-								<label class="sr-only" for="signin-password">Password</label>
-								<input id="signin-password" name="password" type="password" class="form-control signin-password" placeholder="Password">
+								<div class="col-12">
+									<div class="input-group mb-3">
+										<input name="password" type="password" value="<?php if(isset($_POST["password"])){echo $_POST["password"];} ?>" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+										<div class="input-group-append">
+											<span class="input-group-text" id="pass_eye" onclick="password_show_hide();">
+												<i class="fas fa-eye" id="show_eye"></i>
+												<i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+											</span>
+										</div>
+									</div>
+								</div>
 								<div class="extra mt-3 row justify-content-between">
 									<div class="col-6">
 										<div class="form-check">
@@ -109,7 +118,7 @@ if (isset($_POST["submit"])) {
 				<footer class="app-auth-footer">
 					<div class="container text-center py-3">
 						<!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
-						<small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+						<small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="https://www.coprepedu.com/" target="_blank">Coprep Edu</a> for Target With Alok</small>
 
 					</div>
 				</footer>
@@ -122,7 +131,7 @@ if (isset($_POST["submit"])) {
 			<div class="auth-background-holder">
 			</div>
 			<div class="auth-background-mask"></div>
-			<div class="auth-background-overlay p-3 p-lg-5">
+			<!-- <div class="auth-background-overlay p-3 p-lg-5">
 				<div class="d-flex flex-column align-content-end h-100">
 					<div class="h-100"></div>
 					<div class="overlay-content p-3 p-lg-4 rounded">
@@ -130,13 +139,31 @@ if (isset($_POST["submit"])) {
 						<div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template license.</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!--//auth-background-overlay-->
 		</div>
 		<!--//auth-background-col-->
 
 	</div>
 	<!--//row-->
+
+	<script>
+		function password_show_hide() {
+			var x = document.getElementById("password");
+			var show_eye = document.getElementById("show_eye");
+			var hide_eye = document.getElementById("hide_eye");
+			hide_eye.classList.remove("d-none");
+			if (x.type === "password") {
+				x.type = "text";
+				show_eye.style.display = "none";
+				hide_eye.style.display = "block";
+			} else {
+				x.type = "password";
+				show_eye.style.display = "block";
+				hide_eye.style.display = "none";
+			}
+		}
+	</script>
 
 </body>
 

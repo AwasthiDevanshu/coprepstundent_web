@@ -1,11 +1,10 @@
 <?php
-    require_once("assets/phpclasses/callApi.php");
-    require_once("Constant.php");
-    if(!isset($_SESSION["authtoken"]))
-    {
-        header("Location: login.php");
-        exit();
-    }
+require_once("assets/phpclasses/callApi.php");
+require_once("Constant.php");
+if (!isset($_SESSION["authtoken"])) {
+    header("Location: login.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +12,9 @@
 
 <head>
     <title>Web Dashboard</title>
- <!--this one-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!--this one-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -39,11 +38,9 @@
 
             <?php
 
-            if (isset($_GET['courseId'])) 
-            {
+            if (isset($_GET['courseId'])) {
 
-                if (isset($_SESSION["authtoken"])) 
-                {
+                if (isset($_SESSION["authtoken"])) {
 
                     $url = Url::COURSE_VIDEO;
                     $data["subCatId"] = $_GET['subCatId'] ?? 0;
@@ -52,8 +49,7 @@
                     $response2 = $callApi->call($url, $data);
                     $response2 = json_decode($response2, true);
 
-                    if(!empty($_GET['courseId']))
-                    {
+                    if (!empty($_GET['courseId'])) {
                         $_SESSION["getcourseId"] = $_GET["courseId"];
                     }
 
@@ -70,14 +66,12 @@
                     // print_r($response);
                     // echo "</pre>";
 
-                    if ($purchasedid == null) 
-                    {
+                    if ($purchasedid == null) {
                         echo "404 Not Found";
                         exit();
                     }
 
-                    if ($purchasedid == 1) 
-                    { ?>
+                    if ($purchasedid == 1) { ?>
 
                         <div class="container-xl">
                             <h1 class="app-page-title"> Video Course </h1>
@@ -92,7 +86,7 @@
                         $response = json_decode($response, true);
 
                         $count = 0;
-                        $tab_menu="";
+                        $tab_menu = "";
                         $categoryList = $response["data"]["categoryList"];
 
                         // echo "<pre>";
@@ -111,28 +105,28 @@
                             </div>
                         </div>
                         <div class="container">
-                        <h4 style="margin-top:30px;margin-left:5px;"> Select Video Category </h4>
+                            <h4 style="margin-top:30px;margin-left:5px;"> Select Video Category </h4>
                             <ul class="nav nav-pills">
                                 <?php
                                 $htmlSubCatList =  "";
-                                $activeKey = $_GET["activeKey"]??0;
+                                $activeKey = $_GET["activeKey"] ?? 0;
                                 foreach ($categoryList as $key => $category) {
                                     $active  = 0;
-                                    $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show">';
+                                    $panediv =  '<div id="' . "course" . $key . '" class="tab-pane fade show">';
 
                                     if ($key == $activeKey) {
-                                        $panediv =  '<div id="'."course".$key.'" class="tab-pane fade show in active">';
+                                        $panediv =  '<div id="' . "course" . $key . '" class="tab-pane fade show in active">';
 
                                         $active = 1;
                                     } ?>
-                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab"  href="#<?php echo "course".$key; ?>"> <?php echo $category["categoryName"]; ?></a></li>
+                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab" href="#<?php echo "course" . $key; ?>"> <?php echo $category["categoryName"]; ?></a></li>
                                 <?php
                                     $htmlSubCatList .= $panediv;
 
                                     $SubCatList  = $category["subCategory"];
                                     $subCAthtml = '';
                                     foreach ($SubCatList as $key2 => $subCat) {
-                                        $subCAthtml .= '<a href= "videolist.php?catId='.$subCat['subCategoryId'].'"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;'. $subCat['subCategory'] ."&nbsp;&nbsp;(". $subCat["videoCount"]. " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
+                                        $subCAthtml .= '<a href= "videolist.php?catId=' . $subCat['subCategoryId'] . '"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;' . $subCat['subCategory'] . "&nbsp;&nbsp;(" . $subCat["videoCount"] . " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
                                     }
                                     $htmlSubCatList .= $subCAthtml;
                                     $htmlSubCatList .= ' </div>';
@@ -148,84 +142,80 @@
                         </div>
                     <?php } ?>
 
-                        <?php if ($purchasedid == 0) 
-                        { ?>
+                    <?php if ($purchasedid == 0) { ?>
 
-                            <div class="container-xl">
-                                <h1 class="app-page-title"> Buy Course </h1>
+                        <div class="container-xl">
+                            <h1 class="app-page-title"> Buy Course </h1>
 
-                                <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
-                                <h1 class="course_name"> <?php echo $coursename; ?> </h1>
-                                <div class="icon_cont">
-                                    <div class="lecture_icon">
-                                        <p> <i class="fas fa-stream"></i> <?php echo $lectureCount; ?> Lectures </p>
-                                    </div>
-                                    <div class="duration_icon">
-                                        <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
-                                    </div>
+                            <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
+                            <h1 class="course_name"> <?php echo $coursename; ?> </h1>
+                            <div class="icon_cont">
+                                <div class="lecture_icon">
+                                    <p> <i class="fas fa-stream"></i> <?php echo $lectureCount; ?> Lectures </p>
                                 </div>
-                                <div class="description_box">
-                                    <p>
-                                        <?php 
-                                            if (!empty($description)) 
-                                            {
-                                                echo $description;
-                                            } 
-                                            
-                                            else 
-                                            {
-                                                echo " No Description Available ";
-                                            } 
-                                        ?> 
-                                    </p>
-                                </div>
-
-                                <div class="bottom_btn">
-                                    <div class="demo_video">
-                                        <button class="btn btn-primary demo_btn"> See Demo Video </button>
-                                    </div>
-
-                                    <div class="course_price">
-                                        <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike> Rs. <?php echo $price; ?>/- </h3>
-                                    </div>
-
-                                    <div class="buy_now">
-                                        <button class="btn btn-primary buy_btn"> Buy Course </button>
-                                    </div>
-                                </div>
-
-                                <div class="bottom_btn mobile_bottom">
-                                    <div class="course_price">
-                                        <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike> Rs. <?php echo $price; ?>/- </h3>
-                                    </div>
-
-                                    <div class="demo_video">
-                                        <button class="btn btn-primary demo_btn"> See Demo Video </button>
-                                    </div>
-
-                                    <div class="buy_now">
-                                        <button class="btn btn-primary buy_btn"> Buy Course </button>
-                                    </div>
+                                <div class="duration_icon">
+                                    <p> <i class="fas fa-clock"></i> <?php echo $duration; ?>mins. Per Lectures </p>
                                 </div>
                             </div>
-                        <?php 
-                        }
-                }
-            } ?>
+                            <div class="description_box">
+                                <p>
+                                    <?php
+                                    if (!empty($description)) {
+                                        echo $description;
+                                    } else {
+                                        echo " No Description Available ";
+                                    }
+                                    ?>
+                                </p>
+                            </div>
+
+                            <div class="bottom_btn">
+                                <div class="demo_video">
+                                <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+                                </div>
+
+                                <div class="course_price">
+                                    <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike> Rs. <?php echo $price; ?>/- </h3>
+                                </div>
+
+                                <div class="buy_now">
+                                    <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
+                                </div>
+                            </div>
+                        </div>
         </div>
     </div>
 
     <?php include("includes/footer.php"); ?>
+
+    <div class="bottom_btn mobile_bottom">
+        <div class="course_price">
+            <h3> <strike style="font-size: 14pt; margin-right:10px;color:grey;font-weight:400;"> MRP. <?php echo $mrp ?> </strike> Rs. <?php echo $price; ?>/- </h3>
+        </div>
+
+        <div class="demo_video">
+        <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+        </div>
+
+        <div class="buy_now">
+            <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
+        </div>
     </div>
 
-    <?php
-    include("assets/scripts.php");
-    ?>
+<?php
+                    }
+                }
+            } ?>
+</div>
 
-    <!-- cd-tabs -->
-    <script src="assets/js/util.js"></script>
-    <!-- util functions included in the CodyHouse framework -->
-    <script src="assets/js/main.js"></script>
+<?php
+include("assets/scripts.php");
+?>
+
+<!-- cd-tabs -->
+<script src="assets/js/util.js"></script>
+<!-- util functions included in the CodyHouse framework -->
+<script src="assets/js/main.js"></script>
 
 </body>
 

@@ -54,6 +54,11 @@ body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+#pass_eye {
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+}
+
 #load {
     display: none;
 }
@@ -11467,12 +11472,13 @@ button.close:focus {
     height: 60px;
     padding-top: 1rem;
     padding-left: 1rem;
+    padding-right: 1rem;
     margin-bottom: 1rem
 }
 
 .app-branding .logo-icon {
-    width: 36px;
-    height: 36px
+    width: 100%;
+    height: auto
 }
 
 .app-branding .logo-text {
@@ -12202,22 +12208,22 @@ button.close:focus {
 }
 
 .app-login .auth-background-holder {
-    background: url("../images/background/background-1.jpg") no-repeat center center;
-    background-size: cover;
+    background: url("../images/poster.png") no-repeat center center;
+    background-size: contain;
     height: 100vh;
     min-height: 100%
 }
 
 .app-signup .auth-background-holder {
-    background: url("../images/background/background-2.jpg") no-repeat center center;
-    background-size: cover;
+    background: url("../images/poster.png") no-repeat center center;
+    background-size: contain;
     height: 100vh;
     min-height: 100%
 }
 
 .app-reset-password .auth-background-holder {
-    background: url("../images/background/background-3.jpg") no-repeat center center;
-    background-size: cover;
+    background: url("../images/poster.png") no-repeat center center;
+    background-size: contain;
     height: 100vh;
     min-height: 100%
 }
@@ -12279,8 +12285,8 @@ button.close:focus {
 }
 
 .app-auth-wrapper .app-logo .logo-icon {
-    width: 60px;
-    height: 60px
+    width: 100%;
+    height: auto
 }
 
 .app-auth-wrapper .auth-heading {
