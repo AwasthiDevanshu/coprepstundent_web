@@ -15,7 +15,7 @@ $_SESSION["videoMap"] = [];
 <html lang="en">
 
 <head>
-    <title> Videos </title>
+    <title> Videos | Target With Alok</title>
     <link rel="stylesheet" href="assets/css/videolist.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">

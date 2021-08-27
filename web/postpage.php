@@ -12,7 +12,7 @@ if (!isset($_SESSION["authtoken"])) {
 <html lang="en">
 
 <head>
-    <title>Web Dashboard</title>
+    <title> Current Affairs | Target With Alok </title>
     <link rel="stylesheet" href="assets/css/postpage.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -29,9 +29,6 @@ if (!isset($_SESSION["authtoken"])) {
         <?php include("includes/navbar.php"); ?>
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
-            <div class="container-xl">
-                <h1 class="app-page-title"> Current Affairs Title </h1>
-            </div>
             <?php
             if (isset($_SESSION["authtoken"])) {
                 $url =  Url::CURRENT_AFFAIRS;

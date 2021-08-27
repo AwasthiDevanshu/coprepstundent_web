@@ -13,7 +13,7 @@ $_SESSION["courseMap"] = [];
 <html lang="en">
 
 <head>
-    <title> User Dashboard | Target With Alok </title>
+    <title> My Courses | Target With Alok </title>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -30,9 +30,9 @@ $_SESSION["courseMap"] = [];
         <?php include("includes/navbar.php"); ?>
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
-            <!-- <div class="container-xl">
-                        <h1 class="app-page-title">Dashboard</h1>
-                    </div> -->
+            <div class="container-xl">
+                <h1 class="app-page-title">My Courses</h1>
+            </div>
 
             <div class="row g-4">
 
@@ -57,10 +57,6 @@ $_SESSION["courseMap"] = [];
                         // echo "</pre>";
                 ?>
 
-                        <div class="course_title">
-                            <h1> <?php echo $title; ?> </h1>
-                        </div>
-
                         <?php
                         foreach ($content as $key => $value) {
                             $_SESSION["courseMap"][$value["courseId"]]["purchased"] = $value["purchased"];
@@ -73,34 +69,36 @@ $_SESSION["courseMap"] = [];
                             $_SESSION["courseMap"][$value["courseId"]]["duration"] = $value["duration"];
                             $_SESSION["courseMap"][$value["courseId"]]["discountPercent"] = $value["discountPercent"];
 
+                            if ($value["purchased"] == 1) {
+
                         ?>
 
-                            <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
-                                <div class="app-card app-card-doc shadow-sm h-100">
-                                    <a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><img src="<?php echo $value["thumbnail"]; ?>" style="width: 100%; height:auto;"></a>
-                                    <div class="app-card-body p-3 has-card-actions">
+                                <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
+                                    <div class="app-card app-card-doc shadow-sm h-100">
+                                        <a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><img src="<?php echo $value["thumbnail"]; ?>" style="width: 100%; height:auto;"></a>
+                                        <div class="app-card-body p-3 has-card-actions">
 
-                                        <?php if (!empty($value["isNew"])) { ?>
-                                            <div class="new_course"> New </div><?php } ?>
-                                        <h4 class="app-doc-title truncate mb-0" id="course_title"><a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><?php echo $value["courseName"] ?></a></h4>
-                                        <div class="app-doc-meta">
-                                            <ul class="list-unstyled mb-0">
-                                                <li id="course_price"><span class="text-muted" id="course_price">Price:</span> ₹<?php echo $value["price"]; ?></li>
-                                                <li id="course_mrp"><span class="text-muted" id="course_mrp"><strike>MRP:</span> ₹<?php echo $value["mrp"]; ?></strike></li>
-                                                <li id="course_discount"><span class="text-muted" id="course_discount">Discount:</span> ₹<?php echo $value["discountPercent"]; ?>%</li>
-                                            </ul>
+                                            <?php if (!empty($value["isNew"])) { ?>
+                                                <div class="new_course"> New </div><?php } ?>
+                                            <h4 class="app-doc-title truncate mb-0" id="course_title"><a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><?php echo $value["courseName"] ?></a></h4>
+                                            <div class="app-doc-meta">
+                                                <ul class="list-unstyled mb-0">
+                                                    <li id="course_price"><span class="text-muted" id="course_price">Price:</span> ₹<?php echo $value["price"]; ?></li>
+                                                    <li id="course_mrp"><span class="text-muted" id="course_mrp"><strike>MRP:</span> ₹<?php echo $value["mrp"]; ?></strike></li>
+                                                    <li id="course_discount"><span class="text-muted" id="course_discount">Discount:</span> ₹<?php echo $value["discountPercent"]; ?>%</li>
+                                                </ul>
+                                            </div>
+                                            <!--//app-doc-meta-->
                                         </div>
-                                        <!--//app-doc-meta-->
-                                    </div>
-                                    <!--//app-card-body-->
+                                        <!--//app-card-body-->
 
+                                    </div>
+                                    <!--//app-card-->
                                 </div>
-                                <!--//app-card-->
-                            </div>
 
                 <?php
 
-                            // if (++$i == 4) break;
+                            } // if (++$i == 4) break;
 
                         }
                     }

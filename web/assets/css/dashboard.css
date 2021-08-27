@@ -3,6 +3,10 @@
     font-size: 16pt;
 }
 
+#course_title:hover {
+    text-decoration: underline !important;
+}
+
 .g-4 {
     padding: 12px;
 }

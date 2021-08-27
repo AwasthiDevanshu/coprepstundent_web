@@ -34,7 +34,7 @@ if (isset($_POST["submit"])) {
 <html lang="en">
 
 <head>
-	<title> Login </title>
+	<title> Login | Target With Alok</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
