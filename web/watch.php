@@ -35,7 +35,7 @@ if (!isset($_SESSION["authtoken"])) {
                     $title = $_SESSION["videoMap"][$_GET["videoId"]]["title"] ?? null;
                     $posted_date = $_SESSION["videoMap"][$_GET["videoId"]]["eventDateTime"] ?? null;
                     $videourl = $_SESSION["videoMap"][$_GET["videoId"]]["url"];
-                    $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileUrl"];
+                    $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileurl"];
                     $pdfUrl = $_SESSION["videoMap"][$_GET["videoId"]]["pdfUrl"];
                     $getvideourl = explode("/=", $videourl);
                     $fetchvideourl = $getvideourl[1];
