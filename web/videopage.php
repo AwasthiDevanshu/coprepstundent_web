@@ -171,7 +171,7 @@ if (!isset($_SESSION["authtoken"])) {
 
                             <div class="bottom_btn">
                                 <div class="demo_video">
-                                <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+                                <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
                                 </div>
 
                                 <div class="course_price">
@@ -179,7 +179,7 @@ if (!isset($_SESSION["authtoken"])) {
                                 </div>
 
                                 <div class="buy_now">
-                                    <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
+                                    <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
                                 </div>
                             </div>
                         </div>
@@ -194,11 +194,11 @@ if (!isset($_SESSION["authtoken"])) {
         </div>
 
         <div class="demo_video">
-        <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+        <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
         </div>
 
         <div class="buy_now">
-            <a href="https://play.google.com/store/apps/details?id=com.targetwithalok.app" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
+            <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary buy_btn"> Buy Course </button></a>
         </div>
     </div>
 
