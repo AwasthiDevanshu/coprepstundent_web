@@ -4145,18 +4145,21 @@ fieldset:disabled .btn {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out
 }
 
-.nav-link:hover {
+.nav-item:hover {
     color: #15a362;
-    background: #edfdf6;
+    background: #edfdf6 !important;
     border-left: 3px solid #15a362 !important;
     font-weight: 500;
 }
 
-.selected_nav {
-    color: #15a362 !important;
+.app-menu>.selected_nav {
     background: #edfdf6 !important;
     border-left: 3px solid #15a362 !important;
     font-weight: 500;
+}
+
+.app-menu>.selected_nav a {
+    color: #15a362 !important;
 }
 
 @media(prefers-reduced-motion: reduce) {
