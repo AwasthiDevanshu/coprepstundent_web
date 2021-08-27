@@ -69,6 +69,7 @@ $_SESSION["videoMap"] = [];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["title"] = $videovalue["title"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["eventDateTime"] = $videovalue["eventDateTime"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["url"] = $videovalue["url"];
+                        $_SESSION["videoMap"][$videovalue["videoId"]]["fileUrl"] = $videovalue["fileUrl"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["pdfUrl"] = $videovalue["pdfUrl"];// ucaps me hi h, not necessary hr video me ho okay
                 ?>
 

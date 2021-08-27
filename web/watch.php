@@ -35,10 +35,12 @@ if (!isset($_SESSION["authtoken"])) {
                     $title = $_SESSION["videoMap"][$_GET["videoId"]]["title"] ?? null;
                     $posted_date = $_SESSION["videoMap"][$_GET["videoId"]]["eventDateTime"] ?? null;
                     $videourl = $_SESSION["videoMap"][$_GET["videoId"]]["url"];
+                    $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileUrl"];
                     $pdfUrl = $_SESSION["videoMap"][$_GET["videoId"]]["pdfUrl"];
                     $getvideourl = explode("/=", $videourl);
                     $fetchvideourl = $getvideourl[1];
                     $youtubeurl = "https://www.youtube.com/watch?v=" . $fetchvideourl . "&modestbranding=1";
+                    $fileUrl = empty($fileUrl) ? $youtubeurl : $fileUrl;
                 ?>
 
                     <div id="player" width="80%"></div>
@@ -65,7 +67,7 @@ if (!isset($_SESSION["authtoken"])) {
     <script>
         var player = new Playerjs({
             id: "player",
-            file: "<?php echo $youtubeurl; ?>"
+            file: "<?php echo $fileUrl; ?>"
         }); //pass link here ho gya
     </script>
 
