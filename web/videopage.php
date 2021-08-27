@@ -11,7 +11,7 @@ if (!isset($_SESSION["authtoken"])) {
 <html lang="en">
 
 <head>
-    <title>Course | Target With Alok </title>
+    <title>Course | <?php echo Constant::COMPANYNAME ?> </title>
     <!--this one-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

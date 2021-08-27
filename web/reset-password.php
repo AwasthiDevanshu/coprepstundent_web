@@ -37,7 +37,7 @@ if (isset($_POST["submit"])) {
 <html lang="en">
 
 <head>
-	<title>Forgot Password | Target With Alok </title>
+	<title>Forgot Password | <?php echo Constant::COMPANYNAME ?> </title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
