@@ -79,7 +79,7 @@ $_SESSION["videoMap"] = [];
                         <img src="<?php if(!empty($videovalue["thumbnail"])) { echo $videovalue["thumbnail"]; } else{ echo "assets/images/no image.png"; } ?>" class="video_thumb">
                         <div class="app-card-body p-3 has-card-actions">
                             <h4 id="video_title"> <?php echo $videovalue["title"]; ?> </h4>
-                            <a href="watch.php?videoId=<?php echo $videovalue["videoId"]; ?>"><button class="btn" id="watch_btn"> <i class="fas fa-play"></i> &nbsp; Watch Now </button></a>
+                            <a  class="stretched-link" href="watch.php?videoId=<?php echo $videovalue["videoId"]; ?>"><button class="btn" id="watch_btn"> <i class="fas fa-play"></i> &nbsp; Watch Now </button></a>
                             <!--//app-doc-meta-->
                         </div>
                         <!--//app-card-body-->
