@@ -15,6 +15,10 @@
 					<!--//col-->
 
 					<div class="app-utilities col-auto">
+					<div class="dropdown-menu-header p-3">
+									<a href="<?php echo CONSTANT::ANDROID_APP_LINK?>" > Download App</a>
+								</div>
+		
 						<div class="app-utility-item app-notifications-dropdown dropdown">
 							<a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" title="Notifications">
 								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -29,9 +33,6 @@
 							<div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
 								<div class="dropdown-menu-header p-3">
 									<h5 class="dropdown-menu-title mb-0">Notifications</h5>
-								</div>
-								<div class="dropdown-menu-header p-3">
-									<a href="<?php echo CONSTANT::ANDROID_APP_LINK?>" > Download App</a>
 								</div>
 								<!--//dropdown-menu-title-->
 								<div class="dropdown-menu-content">
