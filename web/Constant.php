@@ -13,4 +13,5 @@ class Url{
     const CURRENT_AFFAIRS = "https://backend.cprep.in/candidate/common/getCurrentAffairsList";
     const ANDROID_APP_LINK = "add_play_store_link";
     const SUPPORT_EMAIL = "support@coprepedu.com";
+    const COMPANYNAME = "Target With Alok";
 }
