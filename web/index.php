@@ -76,8 +76,8 @@ $_SESSION["courseMap"] = [];
                         ?>
 
                             <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
-                                <div class="app-card app-card-doc shadow-sm h-100">
-                                    <a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><img src="<?php echo $value["thumbnail"]; ?>" style="width: 100%; height:auto;"></a>
+                            <a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><div class="app-card app-card-doc shadow-sm h-100">
+                                    <img src="<?php echo $value["thumbnail"]; ?>" style="width: 100%; height:auto;">
                                     <div class="app-card-body p-3 has-card-actions">
                                         <?php if (!empty($value["isNew"])) { ?>
                                             <div class="new_course"> New </div><?php } ?>
@@ -103,6 +103,7 @@ $_SESSION["courseMap"] = [];
                                     </div>
                                     <!--//app-card-body-->
                                 </div>
+                                </a>
                                 <!--//app-card-->
                             </div>
 
