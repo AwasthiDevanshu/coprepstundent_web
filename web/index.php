@@ -40,7 +40,7 @@ $_SESSION["courseMap"] = [];
 
                 if (isset($_SESSION["authtoken"])) {
                     $url =  Url::COURSE_LAYOUT;
-                    $data[] = "";
+                    $data["mycourses"] = "1";
                     $callApi = new CallApi();
                     $response = $callApi->call($url, $data);
                     $response = json_decode($response, true);
