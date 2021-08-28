@@ -46,7 +46,7 @@ if (!isset($_SESSION["authtoken"])) {
                     <div id="player" width="80%"></div>
                     <h1 class="video_title"> <?php echo $title; ?> </h1>
                     <p class="posted_date"> Video posted on: <?php echo $posted_date; ?> </p>
-
+                    <input type="hidden" value="<?php echo $fileUrl;?>">
                     <?php
                     if (!empty($pdfUrl)) {
                         echo "<button class='btn btn_primary'>" . $pdfUrl . "</button>";
