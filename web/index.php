@@ -84,14 +84,14 @@ $_SESSION["courseMap"] = [];
                                         <h4 class="app-doc-title truncate mb-0" id="course_title"><a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><?php echo $value["courseName"] ?></a></h4>
                                         <div class="app-doc-meta">
                                             <ul class="list-unstyled mb-0">
-                                                if($purchased == 0 && $price <= 10 && $price !=0){
+                                               <?php if($purchased == 0 && $price <= 10 && $price !=0){ ?>
                                                     <li id="course_price"><span class="text-muted" id="course_price">Price:</span> ₹<?php echo $value["price"]; ?></li>
                                                     <li id="course_mrp"><span class="text-muted" id="course_mrp"><strike>MRP:</span> ₹<?php echo $value["mrp"]; ?></strike></li>
                                                     <li id="course_discount"><span class="text-muted" id="course_discount">Discount:</span> ₹<?php echo $value["discountPercent"]; ?>%</li>
-                                                } else if($purchased == 1){
-                                                    <li id="course_price"><span class="text-muted" id="course_price">Validity:</span> ₹<?php echo $value["validity"]; ?></li>
-                                                    <li id="course_mrp"><span class="text-muted" id="course_mrp">Purchased on:</span> ₹<?php echo $value["purchaseDate"]; ?></li>
-                                                }
+                                               <?php } else if($purchased == 1){ ?>
+                                                    <li id="course_price"><span class="text-muted" id="course_price">Validity:</span> <?php echo $value["validity"]; ?></li>
+                                                    <li id="course_mrp"><span class="text-muted" id="course_mrp">Purchased on:</span> <?php echo $value["purchaseDate"]; ?></li>
+                                               <?php } ?>
                                                 
                                                 </ul>
                                         </div>
