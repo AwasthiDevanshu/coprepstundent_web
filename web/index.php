@@ -84,7 +84,7 @@ $_SESSION["courseMap"] = [];
                                         <h4 class="app-doc-title truncate mb-0" id="course_title"><a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><?php echo $value["courseName"] ?></a></h4>
                                         <div class="app-doc-meta">
                                             <ul class="list-unstyled mb-0">
-                                               <?php if($value["purchased"] == 0 && $value["price"] <= 10 && $value["price"] !=0){ ?>
+                                               <?php if($value["purchased"] == 0 && $value["price"] > 10 ){ ?>
                                                     <li id="course_price"><span class="text-muted" id="course_price">Price:</span> ₹<?php echo $value["price"]; ?></li>
                                                     <li id="course_mrp"><span class="text-muted" id="course_mrp"><strike>MRP:</span> ₹<?php echo $value["mrp"]; ?></strike></li>
                                                     <li id="course_discount"><span class="text-muted" id="course_discount">Discount:</span> ₹<?php echo $value["discountPercent"]; ?>%</li>
