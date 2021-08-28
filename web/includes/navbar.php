@@ -30,6 +30,9 @@
 								<div class="dropdown-menu-header p-3">
 									<h5 class="dropdown-menu-title mb-0">Notifications</h5>
 								</div>
+								<div class="dropdown-menu-header p-3">
+									<a href="<?php echo CONSTANT::ANDROID_APP_LINK?>" > Download App</a>
+								</div>
 								<!--//dropdown-menu-title-->
 								<div class="dropdown-menu-content">
 									<div class="item p-3">
