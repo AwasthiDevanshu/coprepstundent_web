@@ -37,7 +37,7 @@ if (!isset($_SESSION["authtoken"])) {
                     $videourl = $_SESSION["videoMap"][$_GET["videoId"]]["url"];
                     $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileurl"];
                     $pdfUrl = $_SESSION["videoMap"][$_GET["videoId"]]["pdfUrl"];
-                    $getvideourl = explode("/=", $videourl);
+                    $getvideourl = explode("=", $videourl);
                     $fetchvideourl = $getvideourl[1];
                     $youtubeurl = "https://www.youtube.com/watch?v=" . $fetchvideourl . "&modestbranding=1";
                     $fileUrl = empty($fileUrl) ? $youtubeurl : $fileUrl;
