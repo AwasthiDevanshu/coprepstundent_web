@@ -79,7 +79,6 @@ $_SESSION["courseMap"] = [];
                                 <div class="app-card app-card-doc shadow-sm h-100">
                                     <a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><img src="<?php echo $value["thumbnail"]; ?>" style="width: 100%; height:auto;"></a>
                                     <div class="app-card-body p-3 has-card-actions">
-
                                         <?php if (!empty($value["isNew"])) { ?>
                                             <div class="new_course"> New </div><?php } ?>
                                         <h4 class="app-doc-title truncate mb-0" id="course_title"><a href="videopage.php?courseId=<?php echo $value["courseId"]; ?>"><?php echo $value["courseName"] ?></a></h4>
@@ -93,7 +92,6 @@ $_SESSION["courseMap"] = [];
                                         <!--//app-doc-meta-->
                                     </div>
                                     <!--//app-card-body-->
-
                                 </div>
                                 <!--//app-card-->
                             </div>
@@ -117,6 +115,11 @@ $_SESSION["courseMap"] = [];
     <?php
     include("assets/scripts.php");
     ?>
+
+    <!-- cd-tabs -->
+    <script src="assets/js/util.js"></script>
+    <!-- util functions included in the CodyHouse framework -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 
