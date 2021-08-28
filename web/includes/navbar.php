@@ -162,7 +162,7 @@
 			<a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 			<div class="app-branding">
 				<a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/Logo New.png" alt="logo">
-					<!--<span class="logo-text">Target With Alok</span>-->
+					<!--<span class="logo-text"><?php echo Constant::COMPANYNAME ?></span>-->
 				</a>
 
 			</div>

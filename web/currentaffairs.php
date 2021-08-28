@@ -12,7 +12,7 @@ if (!isset($_SESSION["authtoken"])) {
 <html lang="en">
 
 <head>
-    <title>Current Affairs | Target With Alok</title>
+    <title>Current Affairs | <?php echo Constant::COMPANYNAME ?></title>
     <link rel="stylesheet" href="assets/css/currentaffairs.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">

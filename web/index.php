@@ -13,7 +13,7 @@ $_SESSION["courseMap"] = [];
 <html lang="en">
 
 <head>
-    <title> User Dashboard | Target With Alok </title>
+    <title> User Dashboard | <?php echo Constant::COMPANYNAME ?> </title>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">

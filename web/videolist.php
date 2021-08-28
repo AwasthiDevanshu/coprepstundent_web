@@ -15,7 +15,7 @@ $_SESSION["videoMap"] = [];
 <html lang="en">
 
 <head>
-    <title> Videos | Target With Alok</title>
+    <title> Videos | <?php echo Constant::COMPANYNAME ?></title>
     <link rel="stylesheet" href="assets/css/videolist.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -69,6 +69,7 @@ $_SESSION["videoMap"] = [];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["title"] = $videovalue["title"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["eventDateTime"] = $videovalue["eventDateTime"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["url"] = $videovalue["url"];
+                        $_SESSION["videoMap"][$videovalue["videoId"]]["fileurl"] = $videovalue["fileurl"];
                         $_SESSION["videoMap"][$videovalue["videoId"]]["pdfUrl"] = $videovalue["pdfUrl"];// ucaps me hi h, not necessary hr video me ho okay
                 ?>
 
