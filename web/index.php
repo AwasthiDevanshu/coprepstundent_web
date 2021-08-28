@@ -1,7 +1,7 @@
 <?php
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
-
+require_once("Url.php");
 if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
@@ -13,14 +13,14 @@ $_SESSION["courseMap"] = [];
 <html lang="en">
 
 <head>
-    <title> User Dashboard | <?php echo Url::COMPANYNAME ?> </title>
+    <title> User Dashboard | <?php echo Constant::COMPANYNAME ?> </title>
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
 </head>
 
 <body class="app">
-
+<input style="display:none" value="dashboard"/> 
     <div class="loader-wrapper" id="loader2">
         <img src="assets/images/loader/loader.gif" class="loader">
     </div>

@@ -1,35 +1,23 @@
 <?php
-
+require_once("assets/phpclasses/callApi.php");
+require_once("Constant.php");
+require_once("Url.php");
 $error = "";
 
 error_reporting(0);
 
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["name"]) || !empty($_POST["phone"]) || !empty($_POST["email"]) || !empty($_POST["password"])) {
-		function callApi($url, $data)
-		{
-			$curl = curl_init();
-			$requestBody["data"] = $data;
-			$requestBody["token"] = $_SESSION["authtoken"] ?? "";
-			curl_setopt_array($curl, array(
-				CURLOPT_URL => $url,
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_CUSTOMREQUEST => 'POST',
-				CURLOPT_POSTFIELDS => array('body' => json_encode($requestBody)),
-			));
 
-			$response = curl_exec($curl);
-			return $response;
-		}
-
-		$url = 'https://backend.coprepedu.com/candidate/candidate/candidateSignUp';
+		$url = Url::SIGNUP_URL;
 		$data["companyId"] = "27";
 		$data["name"] = $_POST['name'];
 		$data["mobile"] = $_POST['phone'];
 		$data["username"] = $_POST['phone'];
 		$data["email"] = $_POST['email'];
 		$data["password"] = $_POST['password'];
-		$response = callApi($url, $data);
+		$callApi = new CallApi();
+		$response = $callApi->call($url, $data);
 		$response = json_decode($response, true);
 
 		if (isset($response["error"]) && $response["error"] == 0) {
@@ -69,7 +57,7 @@ if (isset($_POST["submit"])) {
 		<div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 			<div class="d-flex flex-column align-content-end">
 				<div class="app-auth-body mx-auto">
-					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/Logo New.png" alt="logo"></a></div>
+					<div class="app-auth-branding mb-4"><a class="app-logo" href="index.php"><img class="logo-icon me-2" src=" <?php echo Constant::LOGO_URL ?>" alt="logo"></a></div>
 					<h2 class="auth-heading text-center mb-4">Register to Portal</h2>
 
 					<div class="auth-form-container text-start mx-auto">

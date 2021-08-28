@@ -1,5 +1,5 @@
 .buy_course_thumb {
-    width: 100%;
+    width: 85%;
     height: auto;
     object-fit: cover;
     margin-bottom: 20px;
@@ -117,8 +117,7 @@
 }
 
 .nav::-webkit-scrollbar-thumb {
-    background-color: rgb(0, 214, 11);
-    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+    background-color: grey;
     border-radius: 10px;
 }
 
@@ -131,6 +130,7 @@
     border: 1px solid grey;
     margin-bottom: 10px;
     display: inline-block;
+    font-weight: 600;
 }
 
 .nav li a {
@@ -138,18 +138,19 @@
 }
 
 .nav li a:hover {
-    color: green;
+    color: green !important;
 }
 
 .nav li:hover {
-    color: green;
-    border: 1px solid green;
+    color: green !important;
+    border: 1px solid green !important;
     background-color: rgb(214, 255, 214) !important;
     padding: 6px 20px;
     margin-right: 10px;
     border-radius: 100px;
     border: 1px solid grey;
     box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.171);
+    transform: scale(1.05);
 }
 
 .nav .active a {
@@ -187,6 +188,7 @@
     border-bottom: 1px solid green !important;
     background-color: rgb(240, 255, 240) !important;
     font-weight: 600;
+    transform: scale(1.02);
 }
 
 .container {

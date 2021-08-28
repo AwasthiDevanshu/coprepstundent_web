@@ -1,6 +1,7 @@
 <?php
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
+require_once("Url.php");
 
 if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
@@ -70,7 +71,7 @@ if (!isset($_SESSION["authtoken"])) {
                                 else
                                 {
                             ?>
-                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="./assets/images/background/background-3.jpg" class="news_thumb"></a>
+                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="./assets/images/no image.png" class="news_thumb"></a>
                             <?php } ?>
 
                             <h4 class="app-doc-title truncate mb-0" id="news_title"> <?php echo $value["title"]; ?> </h4>

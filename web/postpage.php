@@ -1,6 +1,7 @@
 <?php
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
+require_once("Url.php");
 
 if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
@@ -51,7 +52,7 @@ if (!isset($_SESSION["authtoken"])) {
             } else {
             ?>
 
-                <div class="post_thumb" style="background-image: url('./assets/images/background/background-3.jpg');">
+                <div class="post_thumb" style="background-image: url('./assets/images/no image.png');">
                     <div class="post_thumb_overlay"></div>
                 </div>
 
@@ -67,7 +68,7 @@ if (!isset($_SESSION["authtoken"])) {
                 else
                 {
                 ?>
-                <img src="./assets/images/background/background-3.jpg" class="postpage_thumb">
+                <img src="./assets/images/no image.png" class="postpage_thumb">
                 <?php } ?>
                 <h1 class="post_title"> <?php echo $newsindex["title"] ?> </h1>
             </center>

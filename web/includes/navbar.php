@@ -161,7 +161,7 @@
 		<div class="sidepanel-inner d-flex flex-column">
 			<a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 			<div class="app-branding">
-				<a class="app-logo" href="index.php"><img class="logo-icon me-2" src="assets/images/Logo New.png" alt="logo">
+				<a class="app-logo" href="index.php"><img class="logo-icon me-2" src="<?php echo Constant::LOGO_URL ?>" alt="logo">
 					<!--<span class="logo-text"><?php echo Constant::COMPANYNAME ?></span>-->
 				</a>
 
@@ -183,6 +183,7 @@
 						</a>
 						<!--//nav-link-->
 					</li>
+
 					<!--//nav-item-->
 					<li class="nav-item">
 						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -244,17 +245,6 @@
 </header>
 <!--//app-header-->
 
-<script>
-	$(document).ready(function() {
-		$('ul.app-menu > li')
-			.click(function(e) {
-				$('ul.app-menu > li')
-					.removeClass('selected_nav');
-				$(this).addClass('selected_nav');
-			});
-	});
-</script>
-
 <script src="assets/plugins/popper.min.js"></script>
 <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
@@ -268,3 +258,24 @@
 <?php
 include("assets/scripts.php");
 ?>
+
+<script>
+	$(document).ready(function() {
+		$('ul.app-menu > li')
+			.click(function(e) {
+				$('ul.app-menu > li')
+					.removeClass('selected_nav');
+				$(this).addClass('selected_nav');
+			});
+	});
+	$(document).ready(function(){
+		console.log($("app-menu > li  a").attr("href"));
+		console.log(window.location.href);
+        if($("app-menu > li  a").attr("href")==window.location.href){
+            $("app-menu > li").attr("class","nav-item selected_nav");
+        }
+       else{
+          $(".nav-item").attr("class","nav-item");
+         }
+    });
+</script>

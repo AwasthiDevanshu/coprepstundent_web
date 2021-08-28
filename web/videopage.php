@@ -1,6 +1,8 @@
 <?php
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
+require_once("Url.php");
+
 if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
@@ -74,7 +76,7 @@ if (!isset($_SESSION["authtoken"])) {
                     if ($purchasedid == 1) { ?>
 
                         <div class="container-xl">
-                            <h1 class="app-page-title"> Video Course </h1>
+                            <h1 class="app-page-title"> <?php echo $coursename; ?> </h1>
                         </div>
 
                         <?php
@@ -95,7 +97,6 @@ if (!isset($_SESSION["authtoken"])) {
                         ?>
 
                         <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
-                        <h1 class="course_name"> <?php echo $coursename; ?> </h1>
                         <div class="icon_cont">
                             <div class="lecture_icon">
                                 <p> <i class="fas fa-stream"></i> <?php echo $lectureCount; ?> Lectures </p>
@@ -105,7 +106,6 @@ if (!isset($_SESSION["authtoken"])) {
                             </div>
                         </div>
                         <div class="container">
-                            <h4 style="margin-top:30px;margin-left:5px;"> Select Video Category </h4>
                             <ul class="nav nav-pills">
                                 <?php
                                 $htmlSubCatList =  "";
@@ -126,7 +126,7 @@ if (!isset($_SESSION["authtoken"])) {
                                     $SubCatList  = $category["subCategory"];
                                     $subCAthtml = '';
                                     foreach ($SubCatList as $key2 => $subCat) {
-                                        $subCAthtml .= '<a href= "videolist.php?catId=' . $subCat['subCategoryId'] . '"><div class="folder"><span><i class="fas fa-folder"></i>&nbsp;&nbsp;' . $subCat['subCategory'] . "&nbsp;&nbsp;(" . $subCat["videoCount"] . " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
+                                        $subCAthtml .= '<a href= "videolist.php?catId=' . $subCat['subCategoryId'] . '"><div class="folder"><span><i class="fas fa-folder" style="font-size:15pt;color:green;"></i>&nbsp;&nbsp;' . $subCat['subCategory'] . "&nbsp;&nbsp;(" . $subCat["videoCount"] . " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
                                     }
                                     $htmlSubCatList .= $subCAthtml;
                                     $htmlSubCatList .= ' </div>';
@@ -134,7 +134,6 @@ if (!isset($_SESSION["authtoken"])) {
                             </ul>
 
                             <div class="tab-content">
-                                <h4 style="margin-top: 20px;margin-left:5px;margin-bottom:20px;"> Videos </h4>
                                 <?php echo $htmlSubCatList; ?>
                             </div>
                         </div>
