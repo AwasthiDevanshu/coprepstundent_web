@@ -16,6 +16,7 @@ if (isset($_POST["submit"])) {
 
 		if (!empty($response["data"]["authToken"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
+			$_SESSION["username"] = $data["username"];
 
 			exit(header("Location: index.php"));
 		} else {

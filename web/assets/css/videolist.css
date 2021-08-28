@@ -4,6 +4,17 @@
     flex-wrap: wrap;
 }
 
+#video_title {
+    font-size: 11pt;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.5em;
+    margin-bottom: 10px;
+}
+
 .video_thumb {
     width: 100%;
     height: auto;
@@ -14,7 +25,6 @@
     width: 100%;
     color: white;
     background-color: green;
-    margin-top: 10px;
 }
 
 #watch_btn:hover {
@@ -33,5 +43,9 @@
 @media screen and (max-width: 468px) {
     .pt-3 {
         padding: 10px;
+    }
+    #video_title {
+        font-size: 10pt;
+        margin-bottom: 10px;
     }
 }
