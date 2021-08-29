@@ -37,6 +37,7 @@ if (!isset($_SESSION["authtoken"])) {
                     $videourl = $_SESSION["videoMap"][$_GET["videoId"]]["url"];
                     $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileurl"];
                     $pdfUrl = $_SESSION["videoMap"][$_GET["videoId"]]["pdfUrl"];
+                    $chatId = $_SESSION["videoMap"][$_GET["videoId"]]["chatId"];
                     $getvideourl = explode("=", $videourl);
                     $fetchvideourl = $getvideourl[1];
                     $youtubeurl = "https://www.youtube.com/watch?v=" . $fetchvideourl . "&modestbranding=1";
@@ -50,6 +51,9 @@ if (!isset($_SESSION["authtoken"])) {
                     <?php
                     if (!empty($pdfUrl)) {
                         echo "<button class='btn btn_primary'>" . $pdfUrl . "</button>";
+                    }
+                    if (!empty($chatId)) {
+                        echo "<iframe width='20%' height='100%' src='https://chat.cprep.in/?username=$username&chatId=$chatId;'></iframe>";
                     }
                     ?>
                 <?php
