@@ -53,6 +53,7 @@ if (!isset($_SESSION["authtoken"])) {
                         echo "<button class='btn btn_primary'>" . $pdfUrl . "</button>";
                     }
                     if (!empty($chatId)) {
+                        $username = $_SESSION["username"];
                         echo "<iframe width='20%' height='100%' src='https://chat.cprep.in/?username=$username&chatId=$chatId;'></iframe>";
                     }
                     ?>
