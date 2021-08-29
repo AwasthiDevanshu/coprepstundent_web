@@ -31,6 +31,7 @@ if (!isset($_SESSION["authtoken"])) {
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <?php
+            // https://backend.coprepedu.com/candidate/common/getCurrentAffairs use this to get single affair pass data":{"currentAffairId":"1263"}
             if (isset($_SESSION["authtoken"])) {
                 $url =  Url::CURRENT_AFFAIRS;
                 $data[] = "";
