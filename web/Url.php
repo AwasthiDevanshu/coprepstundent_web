@@ -7,5 +7,6 @@ class Url {
     const CURRENT_AFFAIRS = Constant::BASE_URL."candidate/common/getCurrentAffairsList";
     const FORGET_URL = Constant::BASE_URL."candidate/candidate/forgotPassword";
     const SIGNUP_URL = Constant::BASE_URL."candidate/candidate/candidateSignUp";
+    const CHAT_URL = "https://chat.cprep.in/";
 }
 ?>

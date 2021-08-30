@@ -43,7 +43,8 @@ if($_SESSION["videopurchased"] == 0)
                     $videourl = $_SESSION["videoMap"][$_GET["videoId"]]["url"];
                     $fileUrl = $_SESSION["videoMap"][$_GET["videoId"]]["fileurl"];
                     $pdfUrl = $_SESSION["videoMap"][$_GET["videoId"]]["pdfUrl"];
-                    $getvideourl = explode("/=", $videourl);
+                    $chatId = $_SESSION["videoMap"][$_GET["videoId"]]["chatId"];
+                    $getvideourl = explode("=", $videourl);
                     $fetchvideourl = $getvideourl[1];
                     $youtubeurl = "https://www.youtube.com/watch?v=" . $fetchvideourl . "&modestbranding=1";
                     $fileUrl = empty($fileUrl) ? $youtubeurl : $fileUrl;
@@ -52,10 +53,14 @@ if($_SESSION["videopurchased"] == 0)
                     <div id="player" width="80%"></div>
                     <h1 class="video_title"> <?php echo $title; ?> </h1>
                     <p class="posted_date"> Video posted on: <?php echo $posted_date; ?> </p>
-
+                    <input type="hidden" value="<?php echo $fileUrl;?>">
                     <?php
                     if (!empty($pdfUrl)) {
                         echo "<button class='btn btn_primary'>" . $pdfUrl . "</button>";
+                    }
+                    if (!empty($chatId)) {
+                        $username = $_SESSION["username"];
+                        echo "<iframe width='20%' height='100%' src='https://chat.cprep.in/?username=$username&chatId=$chatId;'></iframe>";
                     }
                     ?>
                 <?php

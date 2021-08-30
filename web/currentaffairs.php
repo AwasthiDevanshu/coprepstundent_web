@@ -38,18 +38,17 @@ if (!isset($_SESSION["authtoken"])) {
             <?php
             if (isset($_SESSION["authtoken"])) {
                 $url =  Url::CURRENT_AFFAIRS;
-                $data[] = "";
+                $data[] = ""; // show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
+                // instead of index pass to another page, simply open up a modal / overlay
                 $callApi = new CallApi();
                 $response = $callApi->call($url, $data);
                 $response = json_decode($response, true);
 
                 $currentAffairs = $response["data"]["currentAffairs"];
-                $newsindex = $currentAffairs["0"];
+                $newsindex = $currentAffairs["0"];   //kya use h iska
                 $i = 0;
 
-                // echo "<pre>";
-                // print_r($currentAffairs);
-                // echo "</pre>";
+            
             }
             ?>
             <div class="row g-4" id="news_row">
@@ -64,7 +63,7 @@ if (!isset($_SESSION["authtoken"])) {
                                 if(!empty($value["imageUrl"]))
                                 {
                             ?>
-                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="<?php echo $value["imageUrl"]; ?>" class="news_thumb"></a>
+                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="<?php echo $value["imageUrl"]; ?>" class="news_thumb"></a> 
                             <?php
                                 }
 
