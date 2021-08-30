@@ -8,6 +8,12 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
+if($_SESSION["videopurchased"] == 0)
+{
+    header("Location: index.php");
+    exit();
+}
+
 $_SESSION["videoMap"] = [];
 
 ?>

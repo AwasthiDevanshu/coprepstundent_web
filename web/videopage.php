@@ -64,6 +64,11 @@ if (!isset($_SESSION["authtoken"])) {
                     $price = $_SESSION["courseMap"][$data["courseId"]]["price"] ?? null;
                     $mrp = $_SESSION["courseMap"][$data["courseId"]]["mrp"] ?? null;
 
+                    if(!empty($purchasedid))
+                    {
+                        $_SESSION["videopurchased"] = $purchasedid;
+                    }
+
                     // echo "<pre>";
                     // print_r($response);
                     // echo "</pre>";
@@ -73,7 +78,11 @@ if (!isset($_SESSION["authtoken"])) {
                         exit();
                     }
 
-                    if ($purchasedid == 1) { ?>
+                    if ($purchasedid == 1) { 
+                    
+                        echo $_SESSION["videopurchased"];
+                        
+                        ?>
 
                         <div class="container-xl">
                             <h1 class="app-page-title"> <?php echo $coursename; ?> </h1>

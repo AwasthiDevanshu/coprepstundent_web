@@ -103,6 +103,17 @@ $_SESSION["courseMap"] = [];
 
                         }
                     }
+
+                    if ($value["purchased"] == 0)
+                        {  ?>
+                            <div class="container-xl">
+                                <div style="background-color:#e6e6e6;padding:50px;">
+                                    <h4 style="color:grey;font-size:15pt;text-align:center;"> You haven't purchased any Course </h4>
+                                    <center><a href="index.php"><button class="btn btn-primary" style="color:white;margin-top:20px;"> Buy your First Course Now! </button></a></center>
+                                </div>
+                            </div>
+                        <?php 
+                        }
                 }
                 ?>
             </div>
