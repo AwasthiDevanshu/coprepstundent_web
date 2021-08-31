@@ -11167,7 +11167,6 @@ button.close:focus {
 .app-header {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .1);
     border-bottom: 1px solid #e7e9ed;
-    height: 56px;
     background: #fff
 }
 
@@ -11237,7 +11236,7 @@ button.close:focus {
 }
 
 .app-utility-item .dropdown-menu.show {
-    top: 23px !important
+    top: 20px !important
 }
 
 .app-utility-item .icon {

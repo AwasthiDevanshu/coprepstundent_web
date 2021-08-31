@@ -7,3 +7,10 @@
     color: black;
     font-size: 25pt;
 }
+
+.chat_box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.11);
+}

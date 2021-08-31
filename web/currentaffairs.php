@@ -38,7 +38,7 @@ if (!isset($_SESSION["authtoken"])) {
             <?php
             if (isset($_SESSION["authtoken"])) {
                 $url =  Url::CURRENT_AFFAIRS;
-                $data[] = ""; // show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
+                $data["filters"]["fromDate"] = "21-08-2021"; //show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
                 // instead of index pass to another page, simply open up a modal / overlay
                 $callApi = new CallApi();
                 $response = $callApi->call($url, $data);
@@ -47,11 +47,13 @@ if (!isset($_SESSION["authtoken"])) {
                 $currentAffairs = $response["data"]["currentAffairs"];
                 $newsindex = $currentAffairs["0"];   //kya use h iska
                 $i = 0;
+                
 
             
             }
             ?>
             <div class="row g-4" id="news_row">
+
                 <?php
                     foreach($currentAffairs as $key => $value)
                     {
