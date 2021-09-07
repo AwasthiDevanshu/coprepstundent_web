@@ -3,10 +3,21 @@ require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
 require_once("Url.php");
 
+error_reporting(0);
+$per_page = 8;
+$pageno = 1;
+
 if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
 }
+
+if (isset($_GET["pageno"])) {
+    $pageno = $_GET["pageno"];
+}
+
+$_SESSION["currentaffairsmap"] = [];
+
 ?>
 
 <!DOCTYPE html>
@@ -37,64 +48,141 @@ if (!isset($_SESSION["authtoken"])) {
 
             <?php
             if (isset($_SESSION["authtoken"])) {
+                require_once("assets/phpclasses/datefunction.php");
+                $fromdate =  $_GET["fromDate"] ?? "2021-01-01";
+                $todate =  $_GET["toDate"] ?? date("Y-m-d");
+                validateDate($fromdate);
+                validateDate($todate);
+
                 $url =  Url::CURRENT_AFFAIRS;
-                $data["filters"]["fromDate"] = "21-08-2021"; //show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
+                $data["filters"]["from"] =  $fromdate;
+                $data["filters"]["to"] =  $todate; //show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
                 // instead of index pass to another page, simply open up a modal / overlay
+                $data["limit"] = $per_page;
+                $data["offset"] = ($pageno - 1) * $per_page;
+                $data[] = "";
                 $callApi = new CallApi();
                 $response = $callApi->call($url, $data);
                 $response = json_decode($response, true);
 
                 $currentAffairs = $response["data"]["currentAffairs"];
-                $newsindex = $currentAffairs["0"];   //kya use h iska
-                $i = 0;
-                
 
-            
+                // echo "<pre>";
+                // print_r($currentAffairs);
+                // echo "</pre>";
+
+                $i = 0;
+                $record = $response["data"]["count"];
+                $pagi = ceil($record / $per_page);
+
+                $previous = $pageno - 1;
+                $next = $pageno + 1;
             }
             ?>
             <div class="row g-4" id="news_row">
 
-                <?php
-                    foreach($currentAffairs as $key => $value)
-                    {
-                ?>
-                <div class="col-6 col-md-4 col-xl-3 col-xxl-2" id="news_col">
-                    <div class="app-card app-card-doc shadow-sm h-100">
-                        <div class="app-card-body p-3 has-card-actions">
-                            <?php
-                                if(!empty($value["imageUrl"]))
-                                {
-                            ?>
-                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="<?php echo $value["imageUrl"]; ?>" class="news_thumb"></a> 
-                            <?php
-                                }
-
-                                else
-                                {
-                            ?>
-                            <a href="postpage.php?indexID=<?php echo $key; ?>"><img src="./assets/images/no image.png" class="news_thumb"></a>
-                            <?php } ?>
-
-                            <h4 class="app-doc-title truncate mb-0" id="news_title"> <?php echo $value["title"]; ?> </h4>
-                            <div class="app-doc-meta">
-                                <p class="news_desc">
-                                    <?php echo $value["smallBody"]; ?>
-                                </p>
+                <form action="" method="GET">
+                    <div class="container" id="search_tab">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">From Date</label>
+                                    <input type="date" name="fromDate" class="form-control" id="exampleFormControlInput1" required>
+                                </div>
                             </div>
-                            <a href="postpage.php?indexID=<?php echo $key; ?>"><button class="btn btn-primary" id="news_btn"> Read More </button></a>
-                            <!--//app-doc-meta-->
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">To Date</label>
+                                    <input type="date" name="toDate" class="form-control" id="exampleFormControlInput1" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Select Language</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>English</option>
+                                        <option value="Hindi">Hindi</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <!--//app-card-body-->
+                        <button class="btn btn-primary search_btn" type="submit"> Search </button>
                     </div>
-                    <!--//app-card-->
-                </div>
+                </form>
+
                 <?php
-                //     if(++$i == 6)
-                // {
-                //     break;
-                // }
-            }
+                foreach ($currentAffairs as $key => $value) {
+                    $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["title"] = $value["title"];
+                    $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["smallBody"] = $value["smallBody"];
+                    $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["body"] = $value["body"];
+                    $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["imageUrl"] = $value["imageUrl"];
                 ?>
+                    <div class="col-6 col-md-4 col-xl-3 col-xxl-2" id="news_col">
+                        <div class="app-card app-card-doc shadow-sm h-100">
+                            <div class="app-card-body p-3 has-card-actions">
+                                <?php
+                                if (!empty($value["imageUrl"])) {
+                                ?>
+                                    <a href="postpage.php?postid=<?php echo $value["currentAffairId"]; ?>"><img src="<?php echo $value["imageUrl"]; ?>" class="news_thumb"></a>
+                                <?php
+                                } else {
+                                ?>
+                                    <a href="postpage.php?postid=<?php echo $value["currentAffairId"]; ?>"><img src="./assets/images/no image.png" class="news_thumb"></a>
+                                <?php } ?>
+
+                                <h4 class="app-doc-title truncate mb-0" id="news_title"> <?php echo $value["title"]; ?> </h4>
+                                <div class="app-doc-meta">
+                                    <p class="news_desc">
+                                        <?php echo $value["smallBody"]; ?>
+                                    </p>
+                                </div>
+                                <a href="postpage.php?postid=<?php echo $value["currentAffairId"]; ?>"><button class="btn btn-primary" id="news_btn"> Read More </button></a>
+                                <!--//app-doc-meta-->
+                            </div>
+                            <!--//app-card-body-->
+                        </div>
+                        <!--//app-card-->
+                    </div>
+                <?php
+                    //     if(++$i == 6)
+                    // {
+                    //     break;
+                    // }
+                }
+                ?>
+
+                <nav aria-label="...">
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item <?php if ($pageno == 1) {
+                                                    echo "disabled";
+                                                } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo "1";
+                                                                                                            echo "&fromDate=" . $fromdate;
+                                                                                                            echo "&toDate=" . $todate; ?>">First</a></li>
+                        <li class="page-item <?php if ($pageno == 1) {
+                                                    echo "disabled";
+                                                } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $previous;
+                                                                                                            echo "&fromDate=" . $fromdate;
+                                                                                                            echo "&toDate=" . $todate; ?>">Previous</a></li>
+                        <?php for ($j = 1; $j <= $pagi; $j++) {
+                            if ($pageno < $j + 3 && $pageno > $j - 3) {
+                        ?>
+                                <li class="page-item <?php if ($pageno == $j) {
+                                                            echo "active";
+                                                        } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $j;
+                                                                                                                    echo "&fromDate=" . $fromdate;
+                                                                                                                    echo "&toDate=" . $todate; ?>"><?php echo $j; ?></a></li>
+                        <?php }
+                        } ?>
+                        <li class="page-item <?php if ($pagi == $pageno) {
+                                                    echo "disabled";
+                                                } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $next;
+                                                                                                            echo "&fromDate=" . $fromdate;
+                                                                                                            echo "&toDate=" . $todate; ?>">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $pagi;
+                                                                                                    echo "&fromDate=" . $fromdate;
+                                                                                                    echo "&toDate=" . $todate; ?>">Last</a></li>
+                    </ul>
+                </nav>
             </div>
 
             <?php include("includes/footer.php"); ?>

@@ -32,21 +32,18 @@ if (!isset($_SESSION["authtoken"])) {
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <?php
             // https://backend.coprepedu.com/candidate/common/getCurrentAffairs use this to get single affair pass data":{"currentAffairId":"1263"}
-            if (isset($_SESSION["authtoken"])) {
-                $url =  Url::CURRENT_AFFAIRS;
-                $data[] = "";
-                $callApi = new CallApi();
-                $response = $callApi->call($url, $data);
-                $response = json_decode($response, true);
-                $indexID = $_GET['indexID'];
-
-                $currentAffairs = $response["data"]["currentAffairs"];
-                $newsindex = $currentAffairs[$indexID];
+            if (!empty($_GET["postid"])) {
+                
+                $imageURL = $_SESSION["currentaffairsmap"][$_GET["postid"]]["imageUrl"];
+                $posttitle = $_SESSION["currentaffairsmap"][$_GET["postid"]]["title"];
+                $postsmallBody = $_SESSION["currentaffairsmap"][$_GET["postid"]]["smallBody"];
+                $postbody = $_SESSION["currentaffairsmap"][$_GET["postid"]]["body"];
+                
             }
 
-            if (!empty($newsindex["imageUrl"])) {
+            if (!empty($imageURL)) {
             ?>
-                <div class="post_thumb" style="background-image: url('<?php echo $newsindex["imageUrl"]; ?>');">
+                <div class="post_thumb" style="background-image: url('<?php echo $imageURL; ?>');">
                     <div class="post_thumb_overlay"></div>
                 </div>
             <?php
@@ -62,19 +59,19 @@ if (!isset($_SESSION["authtoken"])) {
             ?>
             <center>
                 <?php
-                    if (!empty($newsindex["imageUrl"])) {
+                    if (!empty($imageURL)) {
                 ?>
-                <img src="<?php echo $newsindex["imageUrl"]; ?>" class="postpage_thumb">
+                <img src="<?php echo $imageURL; ?>" class="postpage_thumb">
                 <?php } 
                 else
                 {
                 ?>
                 <img src="./assets/images/no image.png" class="postpage_thumb">
                 <?php } ?>
-                <h1 class="post_title"> <?php echo $newsindex["title"] ?> </h1>
+                <h1 class="post_title"> <?php echo $posttitle; ?> </h1>
             </center>
             <div class="post_text">
-                <?php echo $newsindex["body"] ?>
+                <?php echo $postbody ?>
             </div>
         </div>
         <?php include("includes/footer.php"); ?>

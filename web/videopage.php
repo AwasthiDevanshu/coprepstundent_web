@@ -14,7 +14,6 @@ if (!isset($_SESSION["authtoken"])) {
 
 <head>
     <title>Course | <?php echo Constant::COMPANYNAME ?> </title>
-    <!--this one-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/dashboard.css">
@@ -51,6 +50,18 @@ if (!isset($_SESSION["authtoken"])) {
                     $response2 = $callApi->call($url, $data);
                     $response2 = json_decode($response2, true);
 
+                    $url3 = Url::COURSE_NOTES;
+                    $data3["courseId"] = $_GET['courseId'];
+                    $callApi = new CallApi();
+                    $response2 = $callApi->call($url3, $data3);
+                    $response2 = json_decode($response2, true);
+
+                    $notecatlist  = $response2["data"]["notesList"];
+
+                    foreach ($notecatlist as $key3 => $notecat) {
+                        $notesList[$notecat["catId"]][] = $notecat;
+                    }
+
                     if (!empty($_GET['courseId'])) {
                         $_SESSION["getcourseId"] = $_GET["courseId"];
                     }
@@ -64,25 +75,18 @@ if (!isset($_SESSION["authtoken"])) {
                     $price = $_SESSION["courseMap"][$data["courseId"]]["price"] ?? null;
                     $mrp = $_SESSION["courseMap"][$data["courseId"]]["mrp"] ?? null;
 
-                    if(!empty($purchasedid))
-                    {
+                    if (!empty($purchasedid)) {
                         $_SESSION["videopurchased"] = $purchasedid;
                     }
-
-                    // echo "<pre>";
-                    // print_r($response);
-                    // echo "</pre>";
 
                     if ($purchasedid == null) {
                         echo "404 Not Found";
                         exit();
                     }
 
-                    if ($purchasedid == 1) { 
-                    
-                        echo $_SESSION["videopurchased"];
-                        
-                        ?>
+                    if ($purchasedid == 1) {
+
+            ?>
 
                         <div class="container-xl">
                             <h1 class="app-page-title"> <?php echo $coursename; ?> </h1>
@@ -90,7 +94,7 @@ if (!isset($_SESSION["authtoken"])) {
 
                         <?php
 
-                        $url2 = "https://backend.coprepedu.com/course/course/getCourseCategories";
+                        $url2 = Url::COURSE_CAT;
                         $data2["courseId"] = $_GET['courseId'];
                         $callApi = new CallApi();
                         $response = $callApi->call($url2, $data2);
@@ -100,9 +104,6 @@ if (!isset($_SESSION["authtoken"])) {
                         $tab_menu = "";
                         $categoryList = $response["data"]["categoryList"];
 
-                        // echo "<pre>";
-                        // print_r($categoryList);
-                        // echo "</pre>";
                         ?>
 
                         <img src="<?php echo $thumbnail; ?>" class="buy_course_thumb"> <br>
@@ -118,32 +119,46 @@ if (!isset($_SESSION["authtoken"])) {
                             <ul class="nav nav-pills">
                                 <?php
                                 $htmlSubCatList =  "";
+                                $htmlNotesList = "";
                                 $activeKey = $_GET["activeKey"] ?? 0;
                                 foreach ($categoryList as $key => $category) {
                                     $active  = 0;
-                                    $panediv =  '<div id="' . "course" . $key . '" class="tab-pane fade show">';
+                                    $panediv =  '<div id="' . "course" . $category["id"] . '" class="tab-pane fade show">';
 
                                     if ($key == $activeKey) {
-                                        $panediv =  '<div id="' . "course" . $key . '" class="tab-pane fade show in active">';
+                                        $panediv =  '<div id="' . "course" . $category["id"] . '" class="tab-pane fade show in active">';
 
                                         $active = 1;
                                     } ?>
-                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab" href="#<?php echo "course" . $key; ?>"> <?php echo $category["categoryName"]; ?></a></li>
+                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab" href="#<?php echo "course" . $category["id"]; ?>"> <?php echo $category["categoryName"]; ?></a></li>
                                 <?php
                                     $htmlSubCatList .= $panediv;
 
                                     $SubCatList  = $category["subCategory"];
                                     $subCAthtml = '';
+                                    $notCAthtml = '';
+
                                     foreach ($SubCatList as $key2 => $subCat) {
                                         $subCAthtml .= '<a href= "videolist.php?catId=' . $subCat['subCategoryId'] . '"><div class="folder"><span><i class="fas fa-folder" style="font-size:15pt;color:green;"></i>&nbsp;&nbsp;' . $subCat['subCategory'] . "&nbsp;&nbsp;(" . $subCat["videoCount"] . " Videos)</span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
                                     }
+
+                                    $notes =  $notesList[$category["id"]] ?? [];
+
+                                    foreach ($notes as $key4 => $notesvalue) {
+                                        $notCAthtml .= '<a href= "' . $notesvalue["url"] . '" target="_blank"><div class="folder"><span><i class="fas fa-folder" style="font-size:15pt;color:green;"></i>&nbsp;&nbsp;' . $notesvalue['title'] . "&nbsp;&nbsp; Click To Get Notes </span><span class='arrow_icon'><i class='fas fa-chevron-right'></i></span></div></a>";
+                                    }
+
                                     $htmlSubCatList .= $subCAthtml;
+                                    $htmlSubCatList .= $notCAthtml;
                                     $htmlSubCatList .= ' </div>';
-                                } ?>
+                                }
+                                ?>
                             </ul>
 
                             <div class="tab-content">
+
                                 <?php echo $htmlSubCatList; ?>
+
                             </div>
                         </div>
                         <div class="row g-4">
@@ -179,7 +194,7 @@ if (!isset($_SESSION["authtoken"])) {
 
                             <div class="bottom_btn">
                                 <div class="demo_video">
-                                <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+                                    <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
                                 </div>
 
                                 <div class="course_price">
@@ -202,7 +217,7 @@ if (!isset($_SESSION["authtoken"])) {
         </div>
 
         <div class="demo_video">
-        <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
+            <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary demo_btn"> See Demo Video </button></a>
         </div>
 
         <div class="buy_now">
