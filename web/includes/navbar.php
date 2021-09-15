@@ -191,8 +191,8 @@
 						<!--//nav-link-->
 					</li>
 
-					<li class="nav-item">
-						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+					<!-- <li class="nav-item">
+						
 						<a class="nav-link currentTarget" href="test.php">
 							<span class="nav-icon">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
@@ -203,8 +203,8 @@
 							</span>
 							<span class="nav-link-text">Test Series</span>
 						</a>
-						<!--//nav-link-->
-					</li>
+						
+					</li> -->
 					<!--//nav-item-->
 				</ul>
 				<!--//app-menu-->
