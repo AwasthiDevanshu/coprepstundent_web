@@ -53,11 +53,13 @@ $_SESSION["currentaffairsmap"] = [];
                 $todate =  $_GET["toDate"] ?? date("Y-m-d");
                 validateDate($fromdate);
                 validateDate($todate);
+                $language = $_GET["language"]??"en";
 
                 $url =  Url::CURRENT_AFFAIRS;
                 $data["filters"]["from"] =  $fromdate;
                 $data["filters"]["to"] =  $todate; //show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
                 // instead of index pass to another page, simply open up a modal / overlay
+                $data["filters"]["langCode"] = $language;
                 $data["limit"] = $per_page;
                 $data["offset"] = ($pageno - 1) * $per_page;
                 $data[] = "";
@@ -87,21 +89,21 @@ $_SESSION["currentaffairsmap"] = [];
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">From Date</label>
-                                    <input type="date" name="fromDate" class="form-control" id="exampleFormControlInput1" required>
+                                    <input type="date" name="fromDate" class="form-control" value="<?php if(isset($fromdate)){ echo $fromdate; } ?>" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">To Date</label>
-                                    <input type="date" name="toDate" class="form-control" id="exampleFormControlInput1" required>
+                                    <input type="date" name="toDate" class="form-control" value="<?php if(isset($todate)){ echo $todate; }?>" required>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Select Language</label>
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>English</option>
-                                        <option value="Hindi">Hindi</option>
+                                    <select class="form-select" name="language" aria-label="Default select example">
+                                        <option selected value="en">English</option>
+                                        <option value="hi">Hindi</option>
                                     </select>
                                 </div>
                             </div>
@@ -111,6 +113,9 @@ $_SESSION["currentaffairsmap"] = [];
                 </form>
 
                 <?php
+
+                if(!empty($currentAffairs))
+                {
                 foreach ($currentAffairs as $key => $value) {
                     $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["title"] = $value["title"];
                     $_SESSION["currentaffairsmap"][$value["currentAffairId"]]["smallBody"] = $value["smallBody"];
@@ -148,6 +153,15 @@ $_SESSION["currentaffairsmap"] = [];
                     // {
                     //     break;
                     // }
+                }}
+                else
+                {
+                    ?>
+
+                    <img src="assets/images/no record.png" class="no_record_img">
+                    <h4 style='text-align:center;color:black'>No Record Found </h4>
+
+                    <?php
                 }
                 ?>
 
@@ -157,12 +171,12 @@ $_SESSION["currentaffairsmap"] = [];
                                                     echo "disabled";
                                                 } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo "1";
                                                                                                             echo "&fromDate=" . $fromdate;
-                                                                                                            echo "&toDate=" . $todate; ?>">First</a></li>
+                                                                                                            echo "&toDate=" . $todate; echo "&language=" . $language;?>">First</a></li>
                         <li class="page-item <?php if ($pageno == 1) {
                                                     echo "disabled";
                                                 } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $previous;
                                                                                                             echo "&fromDate=" . $fromdate;
-                                                                                                            echo "&toDate=" . $todate; ?>">Previous</a></li>
+                                                                                                            echo "&toDate=" . $todate; echo "&language=" . $language;?>">Previous</a></li>
                         <?php for ($j = 1; $j <= $pagi; $j++) {
                             if ($pageno < $j + 3 && $pageno > $j - 3) {
                         ?>
@@ -170,17 +184,19 @@ $_SESSION["currentaffairsmap"] = [];
                                                             echo "active";
                                                         } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $j;
                                                                                                                     echo "&fromDate=" . $fromdate;
-                                                                                                                    echo "&toDate=" . $todate; ?>"><?php echo $j; ?></a></li>
+                                                                                                                    echo "&toDate=" . $todate; echo "&language=" . $language;?>"><?php echo $j; ?></a></li>
                         <?php }
                         } ?>
                         <li class="page-item <?php if ($pagi == $pageno) {
                                                     echo "disabled";
                                                 } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $next;
                                                                                                             echo "&fromDate=" . $fromdate;
-                                                                                                            echo "&toDate=" . $todate; ?>">Next</a></li>
-                        <li class="page-item"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $pagi;
+                                                                                                            echo "&toDate=" . $todate; echo "&language=" . $language;?>">Next</a></li>
+                        <li class="page-item <?php if ($pagi == $pageno) {
+                                                    echo "disabled";
+                                                } ?>"><a class="page-link" href="currentaffairs.php?pageno=<?php echo $pagi;
                                                                                                     echo "&fromDate=" . $fromdate;
-                                                                                                    echo "&toDate=" . $todate; ?>">Last</a></li>
+                                                                                                    echo "&toDate=" . $todate; echo "&language=" . $language;?>">Last</a></li>
                     </ul>
                 </nav>
             </div>

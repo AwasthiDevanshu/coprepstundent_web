@@ -1,0 +1,74 @@
+.test_cont {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.103);
+    border: 2px solid rgb(226, 226, 226);
+    margin-bottom: 15px;
+}
+
+.test_img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.test_cont h4 {
+    text-align: center;
+    font-size: 14pt;
+    line-height: 1.2em;
+    margin-top: 10px;
+}
+
+.test_cont:hover {
+    box-shadow: 3px 3px 15px 2px rgba(0, 0, 0, 0.089);
+    cursor: pointer;
+    border: 2px solid rgb(0, 221, 0);
+    transform: scale(1.02);
+}
+
+.test_topic h1 {
+    color: black;
+    font-size: 22pt !important;
+    margin: 15px 0px;
+}
+
+.test_price {
+    text-align: center;
+    color: rgb(0, 179, 0);
+    font-weight: 700;
+}
+
+#view_all_btn {
+    width: 100%;
+    color: black;
+    background-color: white;
+    border: 1px solid rgb(206, 206, 206);
+    margin-bottom: 7px;
+}
+
+#view_all_btn:hover {
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.123);
+}
+
+#buy_now_btn {
+    width: 100%;
+    color: white;
+    background-color: rgb(0, 179, 15);
+    border: 1px solid rgb(0, 179, 15);
+}
+
+#buy_now_btn:hover {
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.178);
+}
+
+#page_title {
+    color: black;
+    font-size: 25pt;
+}
+
+@media only screen and (max-width: 600px) {
+    #test_row_cont .col {
+        width: 50% !important;
+    }
+}

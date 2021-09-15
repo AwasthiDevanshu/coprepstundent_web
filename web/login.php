@@ -17,10 +17,12 @@ if (isset($_POST["submit"])) {
 		if (!empty($response["data"]["authToken"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
 			$_SESSION["username"] = $data["username"];
+			$_SESSION["name"] = $data["name"];
 
 			exit(header("Location: index.php"));
 		} else {
-			header("Location: login.php?error=Incorrect Username or Password");
+			// print_r($response);
+			header('Location: login.php?error=Incorrect Username or Password');
 			exit();
 		}
 	} else {
@@ -69,7 +71,7 @@ if (isset($_POST["submit"])) {
 						<form action="" method="POST" class="auth-form login-form">
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Username</label>
-								<input id="signin-email" name="username" type="text" value="<?php if(isset($_POST["username"])){echo $_POST["username"];} ?>" class="form-control signin-email" placeholder="Username">
+								<input id="signin-email" name="username" type="text" value="<?php if(isset($_POST["username"])){ echo $_POST["username"];} ?>" class="form-control signin-email" placeholder="Username">
 							</div>
 							<!--//form-group-->
 							<div class="password mb-3">

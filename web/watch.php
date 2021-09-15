@@ -60,7 +60,8 @@ if($_SESSION["videopurchased"] == 0)
                     }
                     if (!empty($chatId)) {
                         $username = $_SESSION["username"];
-                        echo "<div class='chat_box'><iframe width='100%' height='400px' src='https://chat.cprep.in/?username=$username&chatId=$chatId;'></iframe></div>";
+                        $name = $_SESSION["name"];
+                        echo "<div class='chat_box'><iframe width='100%' height='400px' src='https://chat.cprep.in/?username=$name&chatId=$chatId;'></iframe></div>";
                     }
                     ?>
                 <?php
