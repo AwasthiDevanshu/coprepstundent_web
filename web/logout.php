@@ -10,6 +10,12 @@ $callApi = new CallApi();
 $response = $callApi->call($url, $data);
 $response = json_decode($response, true);
 
+if($response)
+{
+    header("Location: login.php");
+    exit();
+}
+
 
 // session_start();
 // unset($_SESSION["authtoken"]);

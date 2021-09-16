@@ -19,7 +19,9 @@ if (isset($_POST["submit"])) {
 			$_SESSION["username"] = $data["username"];
 			$_SESSION["name"] = $data["name"];
 
-			exit(header("Location: index.php"));
+			header("Location: index.php");
+			exit;
+			
 		} else {
 			// print_r($response);
 			header('Location: login.php?error=Incorrect Username or Password');
