@@ -12,11 +12,10 @@ $response = json_decode($response, true);
 
 if($response)
 {
+    session_start();
+    unset($_SESSION["authtoken"]);
     header("Location: login.php");
     exit();
 }
 
 
-// session_start();
-// unset($_SESSION["authtoken"]);
-// header("Location: login.php");

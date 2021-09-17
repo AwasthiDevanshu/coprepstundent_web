@@ -2,7 +2,7 @@
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
 require_once("Url.php");
-if (!empty($_SESSION["authtoken"])) {
+if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
 }

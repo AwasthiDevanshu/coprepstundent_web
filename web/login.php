@@ -3,6 +3,7 @@ require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
 require_once("Url.php");
 $error = "";
+$response = "";
 
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["username"]) || !empty($_POST["password"])) {
@@ -22,9 +23,9 @@ if (isset($_POST["submit"])) {
 			header("Location: index.php");
 			exit;
 			
-		} else {
-			// print_r($response);
-			header('Location: login.php?error=Incorrect Username or Password');
+		} else if(isset($response["error"]) == 1){
+			
+			header("Location: login.php?error=".$response["message"]);
 			exit();
 		}
 	} else {
@@ -64,9 +65,9 @@ if (isset($_POST["submit"])) {
 					<h2 class="auth-heading text-center mb-5">Log in to Portal</h2>
 					<div class="auth-form-container text-start">
 
-						<?php if (isset($_GET['error'])) { ?>
+						<?php print_r($response); if (isset($_GET['error'])) { ?>
 							<div class="alert alert-warning alert-dismissible fade show" role="alert">
-								<strong>Alert!</strong> <?php echo $_GET['error']; ?>.
+								<strong><i class="fas fa-exclamation-circle"></i></strong> <span style="text-transform: capitalize;"> <?php echo $_GET['error']; ?> </span>
 								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 							</div> <?php } ?>
 

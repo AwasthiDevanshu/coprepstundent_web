@@ -7,6 +7,9 @@ if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
 }
+
+$testName = $_GET["testName"];
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,7 @@ if (!isset($_SESSION["authtoken"])) {
     <link rel="stylesheet" href="assets/css/dashboard.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
     <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/test.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/testlist.css">
     <script>
         document.getElementsByTagName("html")[0].className += " js";
     </script>
@@ -37,25 +40,98 @@ if (!isset($_SESSION["authtoken"])) {
 
         <div class="app-content pt-3 p-md-3 p-lg-4">
             <div class="container-xl">
-                <h1 class="app-page-title" id="page_title"> Test List </h1>
+                <h1 class="app-page-title" id="page_title"> <?php echo $testName; ?> - Test Series </h1>
             </div>
-            <div class="container-xl" id="test_row_cont">
+            <div class="container-xl" id="test_cont">
                 <?php
 
                 if (isset($_SESSION["authtoken"])) {
                     $url =  Url::TESTLIST_URL;
-                    $data["testSeriesId"] = $_GET["testID"];                                                                                                                       
+                    $data["filters"]["testSeriesId"] = $_GET["testID"];
                     $callApi = new CallApi();
                     $response = $callApi->call($url, $data);
                     $response = json_decode($response, true);
+                    $test_ID =  $_GET["testID"];
 
-                    echo "<pre>";
-                    print_r($response);
-                    echo "</pre>";
-                }
-                    ?>
+                    $testList = $response["data"]["testList"];
+                    $testpurchasID = $_SESSION["testMap"][$_GET["testID"]]["purchased"] ?? null;
+
+                    // echo "<pre>";
+                    // print_r($testList);
+                    // echo "</pre>";
+                ?>
+
+                    <div class="row row-cols-2" id="test_row_cont">
+
+                        <?php
+
+                        foreach ($testList as $key => $test_data) {
+
+                            if ($test_data["active"] == 1) {
+
+                        ?>
+
+                                <div class="col" id="test_row_col">
+                                    <div class="test_body">
+                                        <div class="test_body_cont">
+                                            <h4 class="test_title"> <?php echo $test_data["testName"]; ?> </h4>
+                                            <span class="test_details"><i class="far fa-question-circle"></i> <?php echo $test_data["questionCount"]; ?> Questions </span>
+                                            <span class="test_details"><i class="far fa-file-alt"></i> <?php echo $test_data["testScore"]; ?> Marks </span>
+                                            <span class="test_details"><i class="fas fa-history"></i></i> <?php echo $test_data["testDuration"]; ?> Mins. </span>
+                                            <?php if ($testpurchasID == 1) { ?>
+                                                <button class="btn btn-primary 
+                                        <?php
+
+                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                    echo "disabled";
+                                                }
+
+                                        ?>
+                                        " id="test_btn">
+                                                    <?php
+
+                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                        echo "Not Available";
+                                                    } else {
+                                                        echo "Start Now";
+                                                    }
+                                                    ?>
+                                                </button>
+                                            <?php } else { ?>
+
+                                                <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary
+                                            
+                                            <?php
+                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                    echo "disabled";
+                                                }
+
+                                            ?>
+                                            " id="test_btn">
+                                                    <?php
+
+                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                        echo "Not Available";
+                                                    } else {
+                                                        echo '<i class="fas fa-lock"></i> Unlock Now';
+                                                    }
+                                                    ?>
+                                                </button></a>
+                                            <?php } ?>
+
+                                        </div>
+                                        <div class="test_body_footer">
+                                            <span class="footer_details test_type"> <?php echo $test_data["testTypeTitle"]; ?></span>
+                                            <span class="footer_details test_name"> <?php echo $testName; ?> - Test Series </span>
+                                        </div>
+                                    </div>
+                                </div>
+                        <?php }
+                        } ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
-    </div>
 </body>
+
 </html>

@@ -7,6 +7,9 @@ if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
 }
+
+$_SESSION["testMap"] = [];
+
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +55,10 @@ if (!isset($_SESSION["authtoken"])) {
 
                     $testList = $response["data"]["testList"];
 
+                    // echo "<pre>";
+                    // print_r($testList);
+                    // echo "</pre>"; 
+
                     foreach ($testList as $row) {
                         $topic = $row["topic"];
                         $testSeries = $row["testSeries"]; ?>
@@ -63,23 +70,19 @@ if (!isset($_SESSION["authtoken"])) {
                         <div class="row row-cols-4">
                             <?php
                             foreach ($testSeries as $key => $testcontent) {
+                                $_SESSION["testMap"][$testcontent["testSeriesId"]]["purchased"] = $testcontent["purchased"];
                             ?>
                                 <div class="col">
                                     <div class="test_cont">
                                         <center><img src="<?php echo $testcontent["imageUrl"];?>" class="test_img"></center>
                                         <h4> <?php echo $testcontent["title"];?> </h4>
-                                        <a href="testlist.php?testID=<?php echo $testcontent["testSeriesId"] ?>"><button class="btn btn-primary" id="view_all_btn"> View All Tests </button></a>
+                                        <a href="testlist.php?testID=<?php echo $testcontent["testSeriesId"]."&testName="; echo $testcontent["title"]; ?>"><button class="btn btn-primary" id="view_all_btn"> View All Tests </button></a>
                                         <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary" id="buy_now_btn"> <i class="fas fa-lock"></i> Buy Now </button></a>
                                     </div>
                                 </div>
                             <?php } ?>
                         </div>
-                    <?php }} 
-                    
-                        echo "<pre>";
-                        print_r($testSeries);
-                        echo "</pre>";
-                    ?>
+                    <?php }} ?>
             </div>
         </div>
 </body>

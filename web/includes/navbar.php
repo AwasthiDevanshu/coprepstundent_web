@@ -191,7 +191,7 @@
 						<!--//nav-link-->
 					</li>
 
-					<!-- <li class="nav-item">
+					<li class="nav-item">
 						
 						<a class="nav-link currentTarget" href="test.php">
 							<span class="nav-icon">
@@ -204,7 +204,7 @@
 							<span class="nav-link-text">Test Series</span>
 						</a>
 						
-					</li> -->
+					</li>
 					<!--//nav-item-->
 				</ul>
 				<!--//app-menu-->
