@@ -91,7 +91,7 @@ $testName = $_GET["testName"];
                                                     <?php
 
                                                     if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                        echo "Not Available";
+                                                        echo "Coming Soon";
                                                     } else {
                                                         echo "Start Now";
                                                     }

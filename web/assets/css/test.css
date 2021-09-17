@@ -69,6 +69,6 @@
 
 @media only screen and (max-width: 600px) {
     #test_row_cont .col {
-        width: 50% !important;
+        width: 100% !important;
     }
 }
