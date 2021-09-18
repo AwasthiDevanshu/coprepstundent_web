@@ -8,6 +8,12 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
+if(Constant::PAGE_MAP["test"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 $_SESSION["testMap"] = [];
 
 ?>

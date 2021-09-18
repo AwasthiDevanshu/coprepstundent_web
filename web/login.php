@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
 		$url = Url::LOGIN_URL;
 		$data["username"] = $_POST["username"];
 		$data["password"] = $_POST["password"];
-		$data["companyId"] = "27";
+		$data["companyId"] = Constant::COMPANYID;
 		$callApi = new CallApi();
 		$response = $callApi->call($url, $data);
 		$response = json_decode($response, true);

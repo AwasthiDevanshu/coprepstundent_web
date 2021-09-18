@@ -4,13 +4,19 @@ require_once("Constant.php");
 require_once("Url.php");
 $error = "";
 
+if(Constant::PAGE_MAP["signup"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 error_reporting(0);
 
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["name"]) || !empty($_POST["phone"]) || !empty($_POST["email"]) || !empty($_POST["password"])) {
 
 		$url = Url::SIGNUP_URL;
-		$data["companyId"] = "27";
+		$data["companyId"] = Constant::COMPANYID;
 		$data["name"] = $_POST['name'];
 		$data["mobile"] = $_POST['phone'];
 		$data["username"] = $_POST['phone'];

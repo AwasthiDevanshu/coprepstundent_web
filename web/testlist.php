@@ -8,6 +8,12 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
+if(Constant::PAGE_MAP["testlist"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 $testName = $_GET["testName"];
 
 ?>
@@ -79,10 +85,12 @@ $testName = $_GET["testName"];
                                             <span class="test_details"><i class="far fa-file-alt"></i> <?php echo $test_data["testScore"]; ?> Marks </span>
                                             <span class="test_details"><i class="fas fa-history"></i></i> <?php echo $test_data["testDuration"]; ?> Mins. </span>
                                             <?php if ($testpurchasID == 1) { ?>
-                                                <button class="btn btn-primary 
+                                                <a href="404.php"><button class="btn btn-primary 
                                         <?php
 
-                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                    echo "disabled";
+                                                } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
                                                     echo "disabled";
                                                 }
 
@@ -90,33 +98,39 @@ $testName = $_GET["testName"];
                                         " id="test_btn">
                                                     <?php
 
-                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
                                                         echo "Coming Soon";
+                                                    } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                        echo "Expired";
                                                     } else {
                                                         echo "Start Now";
                                                     }
                                                     ?>
-                                                </button>
+                                                </button></a>
                                             <?php } else { ?>
 
                                                 <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary
                                             
                                             <?php
-                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                    echo "disabled";
+                                                } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
                                                     echo "disabled";
                                                 }
 
                                             ?>
                                             " id="test_btn">
-                                                    <?php
+                                                        <?php
 
-                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || date("Y-m-d H:i:s") >= $test_data["endTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                        echo "Not Available";
-                                                    } else {
-                                                        echo '<i class="fas fa-lock"></i> Unlock Now';
-                                                    }
-                                                    ?>
-                                                </button></a>
+                                                        if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                            echo "Coming Soon";
+                                                        } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                            echo "Expired";
+                                                        } else {
+                                                            echo '<i class="fas fa-lock"></i> Unlock Now';
+                                                        }
+                                                        ?>
+                                                    </button></a>
                                             <?php } ?>
 
                                         </div>

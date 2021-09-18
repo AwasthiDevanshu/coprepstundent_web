@@ -4,12 +4,18 @@ require_once("Constant.php");
 require_once("Url.php");
 error_reporting(0);
 
+if(Constant::PAGE_MAP["reset_pass"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 if (isset($_POST["submit"])) {
 	if (!empty($_POST["email"])) {
 
 		$url = Url::FORGET_URL;
 		$data["email"] = $_POST["email"];
-		$data["companyId"] = "27";
+		$data["companyId"] = Constant::COMPANYID;
 		$callApi = new CallApi();
 		$response = $callApi->call($url, $data);
 		$response = json_decode($response, true);

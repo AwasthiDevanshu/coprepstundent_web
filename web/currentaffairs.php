@@ -12,6 +12,12 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
+if(Constant::PAGE_MAP["current_affairs"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 if (isset($_GET["pageno"])) {
     $pageno = $_GET["pageno"];
 }

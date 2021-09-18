@@ -1,14 +1,23 @@
 <?php
-
-/**
- * File to keep App Constants
- */ 
-class Constant{
-// file name and class name should be same
+class Constant
+{
     const BASE_URL = "https://backend.coprepedu.com/";
     const COMPANYID = 27;
-    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.targetwithalok.app"; // add app link here and use it from here
+    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.targetwithalok.app";
     const SUPPORT_EMAIL = "support@coprepedu.com";
-    const COMPANYNAME = "Target With Alok"; // use this const instead of text
-    const LOGO_URL = "assets/images/Logo New.png"; 
+    const COMPANYNAME = "Target With Alok";
+    const LOGO_URL = "assets/images/Logo New.png";
+    const PAGE_MAP =  [
+                        "index" => true, 
+                        "videopage" => true, 
+                        "videolist" => true, 
+                        "reset_pass" => true, 
+                        "test" => true,
+                        "current_affairs" => true, 
+                        "test" => true, 
+                        "testlist" => true,
+                        "signup" => true,
+                        "watch" => true,
+                        "postpage" => true,
+                    ];
 }

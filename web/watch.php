@@ -7,6 +7,12 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
+if(Constant::PAGE_MAP["watch"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 if($_SESSION["videopurchased"] == 0)
 {
     header("Location: index.php");

@@ -6,6 +6,13 @@ if (!isset($_SESSION["authtoken"])) {
     header("Location: login.php");
     exit();
 }
+
+if(Constant::PAGE_MAP["index"] == false)
+{
+    header("Location: 404.php");
+    exit();
+}
+
 $_SESSION["courseMap"] = [];
 ?>
 
