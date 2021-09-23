@@ -61,10 +61,6 @@ $_SESSION["testMap"] = [];
 
                     $testList = $response["data"]["testList"];
 
-                    // echo "<pre>";
-                    // print_r($testList);
-                    // echo "</pre>"; 
-
                     foreach ($testList as $row) {
                         $topic = $row["topic"];
                         $testSeries = $row["testSeries"]; ?>

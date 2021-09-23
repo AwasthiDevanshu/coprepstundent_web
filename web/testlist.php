@@ -62,9 +62,6 @@ $testName = $_GET["testName"];
                     $testList = $response["data"]["testList"];
                     $testpurchasID = $_SESSION["testMap"][$_GET["testID"]]["purchased"] ?? null;
 
-                    // echo "<pre>";
-                    // print_r($testList);
-                    // echo "</pre>";
                 ?>
 
                     <div class="row row-cols-2" id="test_row_cont">
@@ -92,6 +89,11 @@ $testName = $_GET["testName"];
                                                     echo "disabled";
                                                 } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
                                                     echo "disabled";
+                                                } else{
+                                                    $autoLoginData["password"] = $test_data["password"];
+                                                    $autoLoginData["username"] = $test_data["userName"];
+                                                    $autoLoginKey = base64_encode(json_encode($autoLoginData));  
+                                                    echo "onClick(window.open('https://test.coprepedu.com/autologin/$autoLoginKey')');";
                                                 }
 
                                         ?>
