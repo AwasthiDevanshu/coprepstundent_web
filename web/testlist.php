@@ -82,7 +82,7 @@ $testName = $_GET["testName"];
                                             <span class="test_details"><i class="far fa-file-alt"></i> <?php echo $test_data["testScore"]; ?> Marks </span>
                                             <span class="test_details"><i class="fas fa-history"></i></i> <?php echo $test_data["testDuration"]; ?> Mins. </span>
                                             <?php if ($testpurchasID == 1) { ?>
-                                                <a href="404.php"><button class="btn btn-primary 
+                                                <button class="btn btn-primary 
                                         <?php
 
                                                 if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
@@ -108,7 +108,7 @@ $testName = $_GET["testName"];
                                                         echo "Start Now";
                                                     }
                                                     ?>
-                                                </button></a>
+                                                </button>
                                             <?php } else { ?>
 
                                                 <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary
