@@ -45,7 +45,7 @@
 .test_btn {
     float: right;
     margin-top: -25px;
-    color: white;
+    color: white!important;
     width: 25%;
     height: 40px;
 }
