@@ -42,7 +42,7 @@
     margin-right: 13px;
 }
 
-#test_btn {
+.test_btn {
     float: right;
     margin-top: -25px;
     color: white;
@@ -68,7 +68,7 @@
     #test_row_col {
         width: 100%;
     }
-    #test_btn {
+    .test_btn {
         float: none;
         margin: 0px;
         margin-top: 10px;

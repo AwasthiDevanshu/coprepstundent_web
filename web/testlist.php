@@ -89,23 +89,24 @@ $testName = $_GET["testName"];
                                                     echo "disabled";
                                                 } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
                                                     echo "disabled";
-                                                } else{
-                                                    $autoLoginData["password"] = $test_data["password"];
-                                                    $autoLoginData["username"] = $test_data["userName"];
-                                                    $autoLoginKey = base64_encode(json_encode($autoLoginData));  
-                                                    echo "onClick(window.open('https://test.coprepedu.com/autologin/$autoLoginKey')');";
                                                 }
 
                                         ?>
-                                        " id="test_btn">
+                                        test_btn"
                                                     <?php
 
                                                     if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                        echo "Coming Soon";
+                                                        echo ">Coming Soon";
                                                     } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
-                                                        echo "Expired";
+                                                        echo ">Expired";
                                                     } else {
-                                                        echo "Start Now";
+                                                        
+                                                            $autoLoginData["password"] = $test_data["password"];
+                                                            $autoLoginData["username"] = $test_data["userName"];
+                                                            $autoLoginKey = base64_encode(json_encode($autoLoginData));  
+                                                            echo "onClick(window.open('https://test.coprepedu.com/autologin/$autoLoginKey')');";
+                                                        
+                                                        echo ">Start Now";
                                                     }
                                                     ?>
                                                 </button>
@@ -121,7 +122,7 @@ $testName = $_GET["testName"];
                                                 }
 
                                             ?>
-                                            " id="test_btn">
+                                            test_btn" >
                                                         <?php
 
                                                         if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
