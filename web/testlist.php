@@ -104,7 +104,7 @@ $testName = $_GET["testName"];
                                                             $autoLoginData["password"] = $test_data["password"];
                                                             $autoLoginData["username"] = $test_data["userName"];
                                                             $autoLoginKey = base64_encode(json_encode($autoLoginData));  
-                                                            echo "onClick(window.open('https://test.coprepedu.com/autologin/$autoLoginKey')');";
+                                                            echo "onClick(window.open('".URL::TEST_URL.$autoLoginKey."'));";
                                                         
                                                         echo ">Start Now";
                                                     }

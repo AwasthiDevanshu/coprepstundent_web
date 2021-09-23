@@ -10,8 +10,9 @@ class Url {
     const FORGET_URL = Constant::BASE_URL."candidate/candidate/forgotPassword";
     const SIGNUP_URL = Constant::BASE_URL."candidate/candidate/candidateSignUp";
     const CHAT_URL = "https://chat.cprep.in/";
-    const TEST_URL = Constant::BASE_URL."candidate/candidate/getCandidateTestSeries";
+    const TEST_SERIES_URL = Constant::BASE_URL."candidate/candidate/getCandidateTestSeries";
     const TESTLIST_URL = Constant::BASE_URL."/candidate/candidate/getCandidateTestList";
     const LOGOUT_URL = Constant::BASE_URL."/candidate/candidate/logout";
+    const TEST_URL = "https://test.coprepedu.com/autologin/";
 }
 ?>

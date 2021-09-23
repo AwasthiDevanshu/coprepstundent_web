@@ -53,7 +53,7 @@ $_SESSION["testMap"] = [];
                 <?php
 
                 if (isset($_SESSION["authtoken"])) {
-                    $url =  Url::TEST_URL;
+                    $url =  Url::TEST_SERIES_URL;
                     $data[] = "";
                     $callApi = new CallApi();
                     $response = $callApi->call($url, $data);
