@@ -2,6 +2,7 @@
 require_once("assets/phpclasses/callApi.php");
 require_once("Constant.php");
 require_once("Url.php");
+include("includes/UserInformation.php");
 $error = "";
 $response = "";
 
@@ -19,6 +20,11 @@ if (isset($_POST["submit"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
 			$_SESSION["username"] = $data["username"];
 			$_SESSION["name"] = $data["name"];
+
+			$_SESSION["client_browser"] = UserInfo::get_Browser();
+			$_SESSION["client_ip"] = UserInfo::get_ip();
+			$_SESSION["client_device"] = UserInfo::get_device();
+			$_SESSION["client_os"] = UserInfo::get_os();
 
 			header("Location: index.php");
 			exit;
@@ -82,7 +88,7 @@ if (isset($_POST["submit"])) {
 									<div class="input-group mb-3">
 										<input name="password" type="password" value="<?php if(isset($_POST["password"])){echo $_POST["password"];} ?>" class="input form-control" id="password" placeholder="Password" required="true" aria-label="password" aria-describedby="basic-addon1" />
 										<div class="input-group-append">
-											<span class="input-group-text" id="pass_eye" onclick="password_show_hide();">
+											<span class="input-group-text" id="pass_eye" style="cursor: pointer;" onclick="password_show_hide();">
 												<i class="fas fa-eye" id="show_eye"></i>
 												<i class="fas fa-eye-slash d-none" id="hide_eye"></i>
 											</span>
@@ -137,16 +143,6 @@ if (isset($_POST["submit"])) {
 			<div class="auth-background-holder">
 			</div>
 			<div class="auth-background-mask"></div>
-			<!-- <div class="auth-background-overlay p-3 p-lg-5">
-				<div class="d-flex flex-column align-content-end h-100">
-					<div class="h-100"></div>
-					<div class="overlay-content p-3 p-lg-4 rounded">
-						<h5 class="mb-3 overlay-title">Explore Portal Admin Template</h5>
-						<div>Portal is a free Bootstrap 5 admin dashboard template. You can download and view the template license.</div>
-					</div>
-				</div>
-			</div> -->
-			<!--//auth-background-overlay-->
 		</div>
 		<!--//auth-background-col-->
 

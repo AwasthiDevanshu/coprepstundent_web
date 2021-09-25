@@ -8,8 +8,7 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
-if(Constant::PAGE_MAP["postpage"] == false)
-{
+if (Constant::PAGE_MAP["postpage"] == false) {
     header("Location: 404.php");
     exit();
 }
@@ -39,12 +38,11 @@ if(Constant::PAGE_MAP["postpage"] == false)
             <?php
             // https://backend.coprepedu.com/candidate/common/getCurrentAffairs use this to get single affair pass data":{"currentAffairId":"1263"}
             if (!empty($_GET["postid"])) {
-                
+
                 $imageURL = $_SESSION["currentaffairsmap"][$_GET["postid"]]["imageUrl"];
                 $posttitle = $_SESSION["currentaffairsmap"][$_GET["postid"]]["title"];
                 $postsmallBody = $_SESSION["currentaffairsmap"][$_GET["postid"]]["smallBody"];
                 $postbody = $_SESSION["currentaffairsmap"][$_GET["postid"]]["body"];
-                
             }
 
             if (!empty($imageURL)) {
@@ -63,19 +61,16 @@ if(Constant::PAGE_MAP["postpage"] == false)
             <?php
             }
             ?>
-            <center>
-                <?php
-                    if (!empty($imageURL)) {
-                ?>
+            <?php
+            if (!empty($imageURL)) {
+            ?>
                 <img src="<?php echo $imageURL; ?>" class="postpage_thumb">
-                <?php } 
-                else
-                {
-                ?>
+            <?php } else {
+            ?>
                 <img src="./assets/images/no image.png" class="postpage_thumb">
-                <?php } ?>
-                <h1 class="post_title"> <?php echo $posttitle; ?> </h1>
-            </center>
+            <?php } ?>
+            <h1 class="post_title"> <?php echo $posttitle; ?> </h1>
+
             <div class="post_text">
                 <?php echo $postbody ?>
             </div>

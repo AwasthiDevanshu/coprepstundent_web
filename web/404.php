@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>404 Page </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,12 @@
         <img src="assets/images/404.gif" class="img_main">
         <h4 class="look_text">Look like you're lost</h4>
         <p class="desc_text">the page you are looking for not avaible!</p>
-        <center><a href="index.php"><button class="btn btn-primary go_btn"> Go to Home </button></a></center>
+        <div class="go_homebtn_cont">
+            <a href="index.php">
+                <button class="btn btn-primary go_btn"> Go to Home </button>
+            </a>
+        </div>
     </div>
 </body>
+
 </html>

@@ -8,8 +8,7 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
-if(Constant::PAGE_MAP["testlist"] == false)
-{
+if (Constant::PAGE_MAP["testlist"] == false) {
     header("Location: 404.php");
     exit();
 }
@@ -53,14 +52,14 @@ $testName = $_GET["testName"];
 
                 if (isset($_SESSION["authtoken"])) {
                     $url =  Url::TESTLIST_URL;
-                    $data["filters"]["testSeriesId"] = $_GET["testID"];
+                    $data["filters"]["testSeriesId"] = $_GET["testSeries"];
                     $callApi = new CallApi();
                     $response = $callApi->call($url, $data);
                     $response = json_decode($response, true);
-                    $test_ID =  $_GET["testID"];
+                    $test_ID =  $_GET["testSeries"];
 
                     $testList = $response["data"]["testList"];
-                    $testpurchasID = $_SESSION["testMap"][$_GET["testID"]]["purchased"] ?? null;
+                    $testpurchasID = $_SESSION["testMap"][$_GET["testSeries"]]["purchased"] ?? null;
 
                     // echo "<pre>";
                     // print_r($testList);
@@ -96,20 +95,20 @@ $testName = $_GET["testName"];
 
                                         ?>
                                         " id="test_btn">
-                                                    <?php
+                                                        <?php
 
-                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                        echo "Coming Soon";
-                                                    } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
-                                                        echo "Expired";
-                                                    } else {
-                                                        echo "Start Now";
-                                                    }
-                                                    ?>
-                                                </button></a>
+                                                        if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                            echo "Coming Soon";
+                                                        } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                            echo "Expired";
+                                                        } else {
+                                                            echo "<i class='fas fa-bolt'></i> Start Now";
+                                                        }
+                                                        ?>
+                                                    </button></a>
                                             <?php } else { ?>
 
-                                                <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary
+                                                <button class="btn btn-primary
                                             
                                             <?php
                                                 if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
@@ -119,18 +118,17 @@ $testName = $_GET["testName"];
                                                 }
 
                                             ?>
-                                            " id="test_btn">
-                                                        <?php
-
-                                                        if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                            echo "Coming Soon";
-                                                        } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
-                                                            echo "Expired";
-                                                        } else {
-                                                            echo '<i class="fas fa-lock"></i> Unlock Now';
-                                                        }
-                                                        ?>
-                                                    </button></a>
+                                            " id="test_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    <?php
+                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                        echo "Coming Soon";
+                                                    } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                        echo "Expired";
+                                                    } else {
+                                                        echo '<i class="fas fa-lock"></i> Unlock Now';
+                                                    }
+                                                    ?>
+                                                </button>
                                             <?php } ?>
 
                                         </div>
@@ -144,8 +142,26 @@ $testName = $_GET["testName"];
                         } ?>
                     </div>
                 <?php } ?>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Buy Test Series</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="popup_body">
+                                    <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><img src="assets/images/playstore.png" class="playstore_img"></a><br>
+                                    <h4> OR </h4>
+                                    <button class="contact_institute btn btn-primary"> <i class="fas fa-phone-alt"></i> Contact Institute </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
 </body>
 
 </html>

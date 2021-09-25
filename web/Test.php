@@ -8,8 +8,7 @@ if (!isset($_SESSION["authtoken"])) {
     exit();
 }
 
-if(Constant::PAGE_MAP["test"] == false)
-{
+if (Constant::PAGE_MAP["test"] == false) {
     header("Location: 404.php");
     exit();
 }
@@ -61,10 +60,6 @@ $_SESSION["testMap"] = [];
 
                     $testList = $response["data"]["testList"];
 
-                    // echo "<pre>";
-                    // print_r($testList);
-                    // echo "</pre>"; 
-
                     foreach ($testList as $row) {
                         $topic = $row["topic"];
                         $testSeries = $row["testSeries"]; ?>
@@ -80,17 +75,47 @@ $_SESSION["testMap"] = [];
                             ?>
                                 <div class="col">
                                     <div class="test_cont">
-                                        <center><img src="<?php echo $testcontent["imageUrl"];?>" class="test_img"></center>
-                                        <h4> <?php echo $testcontent["title"];?> </h4>
-                                        <a href="testlist.php?testID=<?php echo $testcontent["testSeriesId"]."&testName="; echo $testcontent["title"]; ?>"><button class="btn btn-primary" id="view_all_btn"> View All Tests </button></a>
-                                        <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><button class="btn btn-primary" id="buy_now_btn"> <i class="fas fa-lock"></i> Buy Now </button></a>
+                                        <img src="<?php echo $testcontent["imageUrl"]; ?>" class="test_img">
+                                        <h4> <?php echo $testcontent["title"]; ?> </h4>
+                                        <a href="testlist.php?testSeries=<?php echo $testcontent["testSeriesId"] . "&testName=";
+                                                                            echo $testcontent["title"]; ?>"><button class="btn btn-primary" id="view_all_btn"> View All Tests </button></a>
+                                        <?php
+                                        if ($testcontent["purchased"] == 0) { ?>
+                                            <button class="btn btn-primary" id="buy_now_btn" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="fas fa-lock"></i> Buy Now </button>
+                                        <?php } else { ?>
+                                            <a href="testlist.php?testSeries=<?php echo $testcontent["testSeriesId"] . "&testName=";
+                                                                                echo $testcontent["title"]; ?>"><button class="btn btn-primary" id="buy_now_btn"> <i class="fas fa-bolt"></i> Start Test </button></a>
+                                        <?php }
+                                        ?>
                                     </div>
                                 </div>
                             <?php } ?>
                         </div>
-                    <?php }} ?>
+                <?php }
+                } ?>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Buy Test Series</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="popup_body">
+                                    <a href="<?php echo Constant::ANDROID_APP_LINK; ?>" target="_blank"><img src="assets/images/playstore.png" class="playstore_img"></a><br>
+                                    <h4> OR </h4>
+                                    <button class="contact_institute btn btn-primary"> <i class="fas fa-phone-alt"></i> Contact Institute </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <?php
+        include("assets/scripts.php");
+        ?>
 </body>
 
 </html>

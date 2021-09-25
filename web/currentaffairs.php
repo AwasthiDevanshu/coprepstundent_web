@@ -63,8 +63,7 @@ $_SESSION["currentaffairsmap"] = [];
 
                 $url =  Url::CURRENT_AFFAIRS;
                 $data["filters"]["from"] =  $fromdate;
-                $data["filters"]["to"] =  $todate; //show a filter above to switch lang and pass its value "langCode":"en","hi" to get lang specific
-                // instead of index pass to another page, simply open up a modal / overlay
+                $data["filters"]["to"] =  $todate;
                 $data["filters"]["langCode"] = $language;
                 $data["limit"] = $per_page;
                 $data["offset"] = ($pageno - 1) * $per_page;
@@ -148,11 +147,8 @@ $_SESSION["currentaffairsmap"] = [];
                                     </p>
                                 </div>
                                 <a href="postpage.php?postid=<?php echo $value["currentAffairId"]; ?>"><button class="btn btn-primary" id="news_btn"> Read More </button></a>
-                                <!--//app-doc-meta-->
                             </div>
-                            <!--//app-card-body-->
                         </div>
-                        <!--//app-card-->
                     </div>
                 <?php
                     //     if(++$i == 6)
@@ -210,12 +206,9 @@ $_SESSION["currentaffairsmap"] = [];
             <?php include("includes/footer.php"); ?>
 
         </div>
-        <!--//app-wrapper-->
-
         <?php
         include("assets/scripts.php");
         ?>
-
 </body>
 
 </html>

@@ -43,6 +43,8 @@
     height: 50px;
     font-size: 15pt;
     background-color: rgb(0, 175, 0);
+    display: block;
+    margin: auto;
 }
 
 .go_btn:hover {
@@ -55,6 +57,7 @@
         width: 100%;
         padding: 20px;
         vertical-align: baseline;
+        padding-top: 120px;
     }
     .img_main {
         height: auto;
