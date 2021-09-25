@@ -56,7 +56,7 @@ if($_SESSION["videopurchased"] == 0)
                     $fileUrl = empty($fileUrl) ? $youtubeurl : $fileUrl;
                 ?>
 
-                    <div id="player" width="80%"></div>
+                    <div id="player"></div>
                     <h1 class="video_title"> <?php echo $title; ?> </h1>
                     <p class="posted_date"> Video posted on: <?php echo $posted_date; ?> </p>
                     <input type="hidden" value="<?php echo $fileUrl;?>">
@@ -86,7 +86,7 @@ if($_SESSION["videopurchased"] == 0)
         var player = new Playerjs({
             id: "player",
             file: "<?php echo $fileUrl; ?>"
-        }); //pass link here ho gya
+        });
     </script>
 
     <?php include("assets/scripts.php"); ?>

@@ -1,5 +1,5 @@
 #player {
-    height: 400px !important;
+    height: 550px !important;
 }
 
 .video_title {
@@ -17,4 +17,10 @@
 
 .inputMessage {
     border: 0px !important;
+}
+
+@media screen and (max-width: 600px) {
+    #player {
+        height: 250px !important;
+    }
 }
