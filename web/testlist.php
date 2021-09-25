@@ -61,9 +61,6 @@ $testName = $_GET["testName"];
                     $testList = $response["data"]["testList"];
                     $testpurchasID = $_SESSION["testMap"][$_GET["testSeries"]]["purchased"] ?? null;
 
-                    // echo "<pre>";
-                    // print_r($testList);
-                    // echo "</pre>";
                 ?>
 
                     <div class="row row-cols-2" id="test_row_cont">
@@ -84,7 +81,7 @@ $testName = $_GET["testName"];
                                             <span class="test_details"><i class="far fa-file-alt"></i> <?php echo $test_data["testScore"]; ?> Marks </span>
                                             <span class="test_details"><i class="fas fa-history"></i></i> <?php echo $test_data["testDuration"]; ?> Mins. </span>
                                             <?php if ($testpurchasID == 1) { ?>
-                                                <a href="404.php"><button class="btn btn-primary 
+                                                <button class="btn btn-primary 
                                         <?php
 
                                                 if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
@@ -94,21 +91,25 @@ $testName = $_GET["testName"];
                                                 }
 
                                         ?>
-                                        " id="test_btn">
-                                                        <?php
+                                        test_btn" <?php
 
-                                                        if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                            echo "Coming Soon";
-                                                        } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
-                                                            echo "Expired";
-                                                        } else {
-                                                            echo "<i class='fas fa-bolt'></i> Start Now";
-                                                        }
-                                                        ?>
-                                                    </button></a>
-                                            <?php } else { ?>
+                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                        echo ">Coming Soon";
+                                                    } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                        echo ">Expired";
+                                                    } else {
 
-                                                <button class="btn btn-primary
+                                                        $autoLoginData["password"] = $test_data["password"];
+                                                        $autoLoginData["username"] = $test_data["userName"];
+                                                        $autoLoginKey = base64_encode(json_encode($autoLoginData));
+                                                        echo " onclick=window.open('" . URL::TEST_URL . $autoLoginKey . "')";
+
+                                                        echo "> <i class='fas fa-bolt'></i> Start Now";
+                                                    }
+                                                    ?> </button>
+                                                <?php } else { ?>
+
+                                                    <button class="btn btn-primary
                                             
                                             <?php
                                                 if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
@@ -118,18 +119,19 @@ $testName = $_GET["testName"];
                                                 }
 
                                             ?>
-                                            " id="test_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                    <?php
-                                                    if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
-                                                        echo "Coming Soon";
-                                                    } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
-                                                        echo "Expired";
-                                                    } else {
-                                                        echo '<i class="fas fa-lock"></i> Unlock Now';
-                                                    }
-                                                    ?>
-                                                </button>
-                                            <?php } ?>
+                                            test_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <?php
+
+                                                        if (date("Y-m-d H:i:s") < $test_data["startTime"] || empty($test_data["startTime"]) || empty($test_data["endTime"]) || $test_data["questionCount"] == 0) {
+                                                            echo "Coming Soon";
+                                                        } elseif (date("Y-m-d H:i:s") >= $test_data["endTime"]) {
+                                                            echo "Expired";
+                                                        } else {
+                                                            echo '<i class="fas fa-lock"></i> Unlock Now';
+                                                        }
+                                                        ?>
+                                                    </button></a>
+                                                <?php } ?>
 
                                         </div>
                                         <div class="test_body_footer">

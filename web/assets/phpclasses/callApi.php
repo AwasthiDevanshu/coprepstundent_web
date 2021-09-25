@@ -17,6 +17,10 @@ class CallApi
         ));
 
         $response = curl_exec($curl);
+        $code = json_decode($response,true)["code"];
+        if(in_array($code, [5005,5030])){
+            unset($_SESSION["authtoken"]);
+        }
         return $response;
     }
 }
