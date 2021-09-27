@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) {
 			$_SESSION["client_device"] = UserInfo::get_device();
 			$_SESSION["client_os"] = UserInfo::get_os();
 
-			header("Location: index.php");
+			header("Location:" +  Constant::DEFAULT_PAGE);
 			exit;
 			
 		} else if(isset($response["error"]) == 1){
