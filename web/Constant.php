@@ -6,6 +6,7 @@ class Constant
     const ANDROID_APP_LINK = "#";
     const SUPPORT_EMAIL = "shrutisanjeev74@gmail.com";
     const COMPANYNAME = "PDA";
+    const DEFAULT_PAGE = "test.php";
     const LOGO_URL = "assets/images/logo_pda.jpeg";
     const PAGE_MAP =  [
                         "index" => false,
