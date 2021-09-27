@@ -2,22 +2,21 @@
 class Constant
 {
     const BASE_URL = "https://backend.coprepedu.com/";
-    const COMPANYID = 27;
-    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.targetwithalok.app";
-    const SUPPORT_EMAIL = "support@coprepedu.com";
-    const COMPANYNAME = "Target With Alok";
-    const LOGO_URL = "assets/images/Logo New.png";
+    const COMPANYID = 32;
+    const ANDROID_APP_LINK = "#";
+    const SUPPORT_EMAIL = "shrutisanjeev74@gmail.com";
+    const COMPANYNAME = "PDA";
+    const LOGO_URL = "assets/images/logo_pda.jpeg";
     const PAGE_MAP =  [
-                        "index" => true,
-                        "videopage" => true,
-                        "videolist" => true,
-                        "reset_pass" => true,
-                        "test" => true,
-                        "current_affairs" => true,
+                        "index" => false,
+                        "videopage" => false,
+                        "videolist" => false,
+                        "reset_pass" => false,
+                        "current_affairs" => false,
                         "test" => true,
                         "testlist" => true,
                         "signup" => true,
-                        "watch" => true,
-                        "postpage" => true,
+                        "watch" => false,
+                        "postpage" => false,
                     ];
 }
