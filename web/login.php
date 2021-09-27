@@ -19,14 +19,14 @@ if (isset($_POST["submit"])) {
 		if (!empty($response["data"]["authToken"])) {
 			$_SESSION["authtoken"] = $response["data"]["authToken"];
 			$_SESSION["username"] = $data["username"];
-			$_SESSION["name"] = $data["name"];
+			$_SESSION["name"] = $response["data"]["name"];
 
 			$_SESSION["client_browser"] = UserInfo::get_Browser();
 			$_SESSION["client_ip"] = UserInfo::get_ip();
 			$_SESSION["client_device"] = UserInfo::get_device();
 			$_SESSION["client_os"] = UserInfo::get_os();
 
-			header("Location:" +  Constant::DEFAULT_PAGE);
+			header("Location:" .  Constant::DEFAULT_PAGE);
 			exit;
 			
 		} else if(isset($response["error"]) == 1){
