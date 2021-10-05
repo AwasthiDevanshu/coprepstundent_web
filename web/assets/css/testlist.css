@@ -50,6 +50,10 @@
     height: 40px;
 }
 
+.free_test {
+    background-color: rgb(76, 0, 255) !important;
+}
+
 .disabled {
     background-color: white !important;
     color: red !important;
