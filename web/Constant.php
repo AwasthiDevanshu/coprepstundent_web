@@ -6,6 +6,7 @@ class Constant
     const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.targetwithalok.app";
     const SUPPORT_EMAIL = "support@coprepedu.com";
     const COMPANYNAME = "Target With Alok";
+    const DEFAULT_PAGE = "index.php";
     const LOGO_URL = "assets/images/Logo New.png";
     const PAGE_MAP =  [
                         "index" => true,

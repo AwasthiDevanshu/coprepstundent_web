@@ -2,6 +2,9 @@
 if(session_status() !== PHP_SESSION_ACTIVE){
     session_start();
 }
+
+date_default_timezone_set('Asia/Kolkata');
+
 class CallApi
 {
     function call($url, $data)

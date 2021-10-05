@@ -18,6 +18,7 @@
 
 						<a href="<?php echo CONSTANT::ANDROID_APP_LINK ?>" target="_blank" style="padding: 10px;"> Download App</a>
 
+						<?php if(false){ ?>	
 						<div class="app-utility-item app-notifications-dropdown dropdown">
 							<a class="dropdown-toggle no-toggle-arrow" id="notifications-dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" title="Notifications">
 								<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
@@ -28,7 +29,6 @@
 								<span class="icon-badge">3</span>
 							</a>
 							<!--//dropdown-toggle-->
-
 							<div class="dropdown-menu p-0" aria-labelledby="notifications-dropdown-toggle">
 								<div class="dropdown-menu-header p-3">
 									<h5 class="dropdown-menu-title mb-0">Notifications</h5>
@@ -125,7 +125,8 @@
 
 							</div>
 							<!--//dropdown-menu-->
-						</div>
+						</div> 
+						<?php } ?>
 						<!--//app-utility-item-->
 
 						<div class="app-utility-item app-user-dropdown dropdown">
@@ -162,37 +163,43 @@
 
 			<nav id="app-nav" class="app-nav flex-grow-1">
 				<ul class="app-menu list-unstyled accordion" id="menu-accordion">
-					<li class="nav-item selected_nav">
-						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-						<a class="nav-link" href="index.php">
-							<span class="nav-icon">
-								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-									<path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
-									<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-								</svg>
-							</span>
-							<span class="nav-link-text">Dashboard</span>
-						</a>
-						<!--//nav-link-->
-					</li>
+					<?php if (Constant::PAGE_MAP["index"]) { ?>
+						<li class="nav-item selected_nav">
+							<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+							<a class="nav-link" href="index.php">
+								<span class="nav-icon">
+									<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
+										<path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+									</svg>
+								</span>
+								<span class="nav-link-text">Dashboard</span>
+							</a>
+							<!--//nav-link-->
+						</li>
+					<?php } ?>
 
-					<!--//nav-item-->
-					<li class="nav-item">
-						<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-						<a class="nav-link currentTarget" href="currentaffairs.php">
-							<span class="nav-icon">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
-									<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
-									<path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
-								</svg>
-							</span>
-							<span class="nav-link-text">Current Affairs</span>
-						</a>
-						<!--//nav-link-->
-					</li>
+					<?php if (Constant::PAGE_MAP["current_affairs"]) { ?>
+						<!--//nav-item-->
+						<li class="nav-item">
+							<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
+
+							<a class="nav-link currentTarget" href="currentaffairs.php">
+								<span class="nav-icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+										<path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
+										<path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+									</svg>
+								</span>
+								<span class="nav-link-text">Current Affairs</span>
+							</a>
+							<!--//nav-link-->
+						</li>
+					<?php } ?>
+					<?php if (Constant::PAGE_MAP["test"]) { ?>
 
 					<li class="nav-item">
-						
+
 						<a class="nav-link currentTarget" href="test.php">
 							<span class="nav-icon">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-data" viewBox="0 0 16 16">
@@ -203,8 +210,10 @@
 							</span>
 							<span class="nav-link-text">Test Series</span>
 						</a>
-						
+
 					</li>
+					<?php } ?>
+
 					<!--//nav-item-->
 				</ul>
 				<!--//app-menu-->
