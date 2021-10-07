@@ -64,7 +64,7 @@ $_SESSION["currentaffairsmap"] = [];
                 $url =  Url::CURRENT_AFFAIRS;
                 $data["filters"]["from"] =  $fromdate;
                 $data["filters"]["to"] =  $todate;
-                $data["filters"]["langCode"] = $language;
+                $data["langCode"] = $language;
                 $data["limit"] = $per_page;
                 $data["offset"] = ($pageno - 1) * $per_page;
                 $data[] = "";
@@ -73,10 +73,6 @@ $_SESSION["currentaffairsmap"] = [];
                 $response = json_decode($response, true);
 
                 $currentAffairs = $response["data"]["currentAffairs"];
-
-                // echo "<pre>";
-                // print_r($currentAffairs);
-                // echo "</pre>";
 
                 $i = 0;
                 $record = $response["data"]["count"];
