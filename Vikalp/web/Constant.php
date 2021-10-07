@@ -9,7 +9,7 @@ class Constant
     const DEFAULT_PAGE = "index.php";
     const LOGO_URL = "assets/images/Logo New.png";
     const PAGE_MAP =  [
-                        "index" => false,
+                        "index" => true,
                         "videopage" => true,
                         "videolist" => true,
                         "reset_pass" => true,
