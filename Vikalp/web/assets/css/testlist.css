@@ -1,0 +1,115 @@
+#page_title {
+    color: black;
+    font-size: 25pt;
+}
+
+.test_body {
+    border-radius: 5px;
+    box-shadow: -1px 1px 4px 0 rgb(117 138 172 / 12%);
+    background-color: white;
+    margin-bottom: 15px;
+}
+
+.test_body:hover {
+    box-shadow: -1px 1px 15px 2px rgb(117 138 172 / 12%);
+    transition: 0.2s;
+    transform: scale(1.03);
+}
+
+.test_body_footer {
+    padding: 6px 25px;
+    background-color: rgb(227, 255, 225);
+    font-size: 10pt;
+}
+
+.footer_details {
+    color: rgb(0, 163, 0);
+}
+
+.test_body_cont {
+    padding: 15px 25px;
+}
+
+.test_title {
+    color: black;
+    margin-bottom: 8px;
+}
+
+.test_details {
+    color: #86a1ae;
+    font-weight: 400;
+    font-size: 10pt;
+    margin-right: 13px;
+}
+
+.test_btn {
+    float: right;
+    margin-top: -25px;
+    color: white !important;
+    width: 25%;
+    height: 40px;
+}
+
+.disabled {
+    background-color: white !important;
+    color: red !important;
+}
+
+.test_type {
+    border-right: 1px solid rgba(0, 163, 0, 0.288);
+    padding-right: 15px;
+}
+
+.test_name {
+    padding-left: 15px;
+}
+
+.playstore_img {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contact_institute {
+    color: rgb(0, 192, 0) !important;
+    font-size: 15pt !important;
+    width: 100%;
+    height: 60px !important;
+    border-radius: 10px !important;
+    background-color: rgb(210, 255, 210) !important;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.11) !important;
+}
+
+.contact_institute:hover {
+    color: white !important;
+    background-color: rgb(0, 214, 0) !important;
+}
+
+.popup_body {
+    width: 60%;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    #test_row_col {
+        width: 100%;
+    }
+    .test_btn {
+        float: none;
+        margin: 0px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .popup_body {
+        width: 100%;
+    }
+    .playstore_img {
+        width: 90%;
+    }
+    .contact_institute {
+        width: 90%;
+    }
+}

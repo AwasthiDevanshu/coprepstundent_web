@@ -1,0 +1,114 @@
+.test_cont {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.103);
+    border: 2px solid rgb(226, 226, 226);
+    margin-bottom: 15px;
+}
+
+.test_img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+}
+
+.test_cont h4 {
+    text-align: center;
+    font-size: 14pt;
+    line-height: 1.2em;
+    margin-top: 10px;
+}
+
+.test_cont:hover {
+    box-shadow: 3px 3px 15px 2px rgba(0, 0, 0, 0.089);
+    cursor: pointer;
+    border: 2px solid rgb(0, 221, 0);
+    transform: scale(1.02);
+}
+
+.test_topic h1 {
+    color: black;
+    font-size: 22pt !important;
+    margin: 15px 0px;
+}
+
+.test_price {
+    text-align: center;
+    color: rgb(0, 179, 0);
+    font-weight: 700;
+}
+
+#view_all_btn {
+    width: 100%;
+    color: black;
+    background-color: white;
+    border: 1px solid rgb(206, 206, 206);
+    margin-bottom: 7px;
+}
+
+#view_all_btn:hover {
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.123);
+}
+
+#buy_now_btn {
+    width: 100%;
+    color: white;
+    background-color: rgb(0, 179, 15);
+    border: 1px solid rgb(0, 179, 15);
+}
+
+#buy_now_btn:hover {
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.178);
+}
+
+#page_title {
+    color: black;
+    font-size: 25pt;
+}
+
+.playstore_img {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contact_institute {
+    color: rgb(0, 192, 0) !important;
+    font-size: 15pt !important;
+    width: 100%;
+    height: 60px !important;
+    border-radius: 10px !important;
+    background-color: rgb(210, 255, 210) !important;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.11) !important;
+}
+
+.contact_institute:hover {
+    color: white !important;
+    background-color: rgb(0, 214, 0) !important;
+}
+
+.popup_body {
+    width: 60%;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    #test_row_cont .col {
+        width: 100% !important;
+    }
+    .popup_body {
+        width: 100%;
+    }
+    .playstore_img {
+        width: 90%;
+    }
+    .contact_institute {
+        width: 90%;
+    }
+}

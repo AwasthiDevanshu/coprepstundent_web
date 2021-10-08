@@ -50,6 +50,7 @@ $_SESSION["currentaffairsmap"] = [];
 
             <div class="container-xl">
                 <h1 class="app-page-title"> Current Affairs </h1>
+              
             </div>
 
             <?php
@@ -57,13 +58,18 @@ $_SESSION["currentaffairsmap"] = [];
                 require_once("assets/phpclasses/datefunction.php");
                 $fromdate =  $_GET["fromDate"] ?? "2021-01-01";
                 $todate =  $_GET["toDate"] ?? date("Y-m-d");
+            
                 validateDate($fromdate);
                 validateDate($todate);
                 $language = $_GET["language"]??"en";
 
                 $url =  Url::CURRENT_AFFAIRS;
                 $data["filters"]["from"] =  $fromdate;
-                $data["filters"]["to"] =  $todate;
+                $date = strtotime($todate);
+                $date = strtotime("+1 day", $date);
+                $date =  date("Y-m-d", $date);
+
+                $data["filters"]["to"] =  $date;
                 $data["langCode"] = $language;
                 $data["limit"] = $per_page;
                 $data["offset"] = ($pageno - 1) * $per_page;
@@ -107,8 +113,8 @@ $_SESSION["currentaffairsmap"] = [];
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Select Language</label>
                                     <select class="form-select" name="language" aria-label="Default select example">
-                                        <option selected value="en">English</option>
-                                        <option value="hi">Hindi</option>
+                                        <option <?php if($language === 'en') {echo "selected";} ?> value="en">English</option>
+                                        <option <?php if($language === 'hi') {echo "selected";} ?> value="hi">Hindi</option>
                                     </select>
                                 </div>
                             </div>

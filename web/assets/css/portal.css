@@ -11471,7 +11471,6 @@ button.close:focus {
 }
 
 .app-branding {
-    height: 60px;
     padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -12277,6 +12276,10 @@ button.close:focus {
     width: 100%
 }
 
+#register_here {
+    font-weight: 700;
+}
+
 .app-auth-wrapper {
     background: #fff;
     height: 100vh
@@ -12287,12 +12290,31 @@ button.close:focus {
 }
 
 .app-auth-wrapper .app-logo .logo-icon {
-    width: 100%;
+    width: 100px;
     height: auto
 }
 
 .app-auth-wrapper .auth-heading {
     font-size: 1.5rem
+}
+
+#register_here {
+    background-color: red;
+    padding: 10px !important;
+    color: white;
+    border-radius: 5px;
+}
+
+.div_text {
+    text-align: center;
+    color: black;
+    margin: 20px 0px;
+    font-weight: 700;
+    font-size: 15pt;
+}
+
+#register_here .text-link {
+    color: white !important;
 }
 
 .app-auth-wrapper .form-control::-webkit-input-placeholder {
