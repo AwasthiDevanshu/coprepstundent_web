@@ -21,7 +21,7 @@
         <h4 class="look_text">Look like you're lost</h4>
         <p class="desc_text">the page you are looking for not avaible!</p>
         <div class="go_homebtn_cont">
-            <a href="index.php">
+            <a href="<?php echo Constant::DEFAULT_PAGE; ?>">
                 <button class="btn btn-primary go_btn"> Go to Home </button>
             </a>
         </div>
