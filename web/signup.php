@@ -131,7 +131,9 @@ if (isset($_POST["submit"])) {
 						</form>
 						<!--//auth-form-->
 
-						<div class="auth-option text-center pt-5">Already have an account? <a class="text-link" href="login.php">Log in</a></div>
+						<div class="div_text"> OR </div>
+
+						<a class="text-link" href="login.php"> <div class="auth-option text-center pt-5" id="register_here">Already have an account? Log in</div></a>
 					</div>
 					<!--//auth-form-container-->
 

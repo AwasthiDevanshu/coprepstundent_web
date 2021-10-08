@@ -120,7 +120,9 @@ if (isset($_POST["submit"])) {
 							</div>
 						</form>
 
-						<div class="auth-option text-center pt-5">No Account? Register <a class="text-link" href="signup.php">here</a>.</div>
+							<div class="div_text"> OR </div>
+
+						<a href="signup.php"><div class="auth-option text-center pt-5" id="register_here"> No Account? Register here </div></a>
 					</div>
 					<!--//auth-form-container-->
 
