@@ -87,7 +87,7 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <h2> <?php if (!empty($totalExam_data["rank"])) {
                                                         echo $totalExam_data["rank"];
                                                     } else {
-                                                        echo "N/A";
+                                                        echo "-";
                                                     } ?></h2>
                                         </div>
                                     </div>
@@ -98,11 +98,11 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <p><i class="fas fa-edit"></i></p>
                                         </div>
                                         <div class="rank_text_col">
-                                            <h6> Total Attemptes </h6>
+                                            <h6> Total <br> Attemptes </h6>
                                             <h2><?php if (!empty($totalExam_data["totalAttempts"])) {
                                                     echo $totalExam_data["totalAttempts"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -114,11 +114,11 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <p><i class="fas fa-pencil-alt"></i></p>
                                         </div>
                                         <div class="rank_text_col">
-                                            <h6> Attempted Questions </h6>
+                                            <h6> Attempted <br> Questions </h6>
                                             <h2><?php if (!empty($test_data["attemptedQuestions"])) {
                                                     echo $test_data["attemptedQuestions"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -130,11 +130,11 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <p><i class="fas fa-question"></i></p>
                                         </div>
                                         <div class="rank_text_col">
-                                            <h6> Total Questions </h6>
+                                            <h6> Total <br> Questions </h6>
                                             <h2><?php if (!empty($test_data["totalQuestions"])) {
                                                     echo $test_data["totalQuestions"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -146,11 +146,11 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <p><i class="fas fa-check"></i></p>
                                         </div>
                                         <div class="rank_text_col">
-                                            <h6> Correct Answers </h6>
+                                            <h6> Correct <br> Answers </h6>
                                             <h2><?php if (!empty($test_data["correctAnswers"])) {
                                                     echo $test_data["correctAnswers"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -162,11 +162,11 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <p><i class="fas fa-history"></i></p>
                                         </div>
                                         <div class="rank_text_col">
-                                            <h6> Time Taken </h6>
+                                            <h6> Time <br> Taken </h6>
                                             <h2><?php if (!empty($test_data["timeTaken"])) {
                                                     echo $test_data["timeTaken"] . "M";
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -182,7 +182,7 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <h2><?php if (!empty($test_data["maxScore"])) {
                                                     echo $test_data["maxScore"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
@@ -198,7 +198,7 @@ if (Constant::PAGE_MAP["testresult"] == false) {
                                             <h2><?php if (!empty($test_data["score"])) {
                                                     echo $test_data["score"];
                                                 } else {
-                                                    echo "N/A";
+                                                    echo "-";
                                                 } ?></h2>
                                         </div>
                                     </div>
