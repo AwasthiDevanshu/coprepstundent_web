@@ -20,5 +20,6 @@ class Constant
                         "signup" => true,
                         "watch" => true,
                         "postpage" => true,
+                        "testresult" => true,
                     ];
 }

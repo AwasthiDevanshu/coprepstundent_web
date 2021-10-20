@@ -14,5 +14,6 @@ class Url {
     const TESTLIST_URL = Constant::BASE_URL."/candidate/candidate/getCandidateTestList";
     const LOGOUT_URL = Constant::BASE_URL."/candidate/candidate/logout";
     const TEST_URL = "https://test.coprepedu.com/autologin/";
+    const TEST_RESULT_URL = Constant::BASE_URL."test/test/getTestAnalysis";
 }
 ?>
