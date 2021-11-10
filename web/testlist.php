@@ -84,7 +84,15 @@ $testName = $_GET["testName"];
                                             <span class="test_details"><i class="far fa-question-circle"></i> <?php echo $test_data["questionCount"]; ?> Questions </span>
                                             <span class="test_details"><i class="far fa-file-alt"></i> <?php echo $test_data["testScore"]; ?> Marks </span>
                                             <span class="test_details"><i class="fas fa-history"></i></i> <?php echo $test_data["testDuration"]; ?> Mins. </span>
-                                            <?php if ($testpurchasID == 1) { ?>
+                                            <?php
+
+                                            if($test_data["isCompleted"] ?? 0 > 0)
+                                            {
+                                                ?>
+                                                    <a href="testresult.php?testAttemptId=<?php echo $test_data["testAttemptId"];?>&testName=<?php echo $test_data["testName"]; ?>&testSeries=<?php echo $testName; ?>"><button class="btn btn-primary test_btn"> <i class='fas fa-check-circle'></i> Check Result </button></a>
+                                                <?php
+                                            }
+                                            elseif ($testpurchasID == 1) { ?>
                                                 <button class="btn btn-primary 
                                         <?php
 
@@ -109,7 +117,8 @@ $testName = $_GET["testName"];
                                                         $autoLoginKey = base64_encode(json_encode($autoLoginData));
                                                         echo " onclick=window.open('" . URL::TEST_URL . $autoLoginKey . "')";
                                                         echo "> <i class='fas fa-bolt'></i> Free Test";
-                                                    } else {
+                                                    } 
+                                                    else {
 
                                                         $autoLoginData["password"] = $test_data["password"];
                                                         $autoLoginData["username"] = $test_data["userName"];
@@ -177,5 +186,22 @@ $testName = $_GET["testName"];
         </div>
 
 </body>
+<script>
+    function onBlur() {
+        location.reload();
+    };
+
+    function onFocus() {
+        location.reload();
+    };
+
+    if (/*@cc_on!@*/false) { // check for Internet Explorer
+    	document.onfocusin = onFocus;
+    	document.onfocusout = onBlur;
+    } else {
+    	window.onfocus = onFocus;
+    	window.onblur = onBlur;
+    }
+</script>
 
 </html>

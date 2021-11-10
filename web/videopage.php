@@ -136,7 +136,9 @@ if(Constant::PAGE_MAP["videopage"] == false)
 
                                         $active = 1;
                                     } ?>
-                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'><a data-toggle="tab" href="#<?php echo "course" . $category["id"]; ?>"> <?php echo $category["categoryName"]; ?></a></li>
+                                    <li class='<?php echo  $active == 1 ? "active" : "" ?>'>
+                                    <a data-toggle="tab" href="#<?php echo "course" . $category["id"]; ?>">
+                                     <?php echo $category["categoryName"]; ?></a></li>
                                 <?php
                                     $htmlSubCatList .= $panediv;
 
