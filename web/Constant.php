@@ -17,13 +17,8 @@ class Constant
                         "test" => true,
                         "testlist" => true,
                         "signup" => true,
-<<<<<<< HEAD
                         "watch" => false,
                         "postpage" => false,
-=======
-                        "watch" => true,
-                        "postpage" => true,
                         "testresult" => true,
->>>>>>> main
                     ];
 }
