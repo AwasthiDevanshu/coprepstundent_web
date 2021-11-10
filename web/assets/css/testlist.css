@@ -46,8 +46,9 @@
     float: right;
     margin-top: -25px;
     color: white !important;
-    width: 25%;
+    width: 30%;
     height: 40px;
+    font-size: 11px !important;
 }
 
 .free_test {
