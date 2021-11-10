@@ -1,3 +1,9 @@
+<?php
+
+require_once("Constant.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

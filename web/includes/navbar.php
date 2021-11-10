@@ -154,7 +154,7 @@
 		<div class="sidepanel-inner d-flex flex-column">
 			<a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 			<div class="app-branding">
-				<a class="app-logo" href="index.php"><img class="logo-icon me-2" src="<?php echo Constant::LOGO_URL ?>" alt="logo">
+				<a class="app-logo" href="<?php echo Constant::DEFAULT_PAGE; ?>"><img class="logo-icon me-2" src="<?php echo Constant::LOGO_URL ?>" alt="logo">
 					<!--<span class="logo-text"><?php echo Constant::COMPANYNAME ?></span>-->
 				</a>
 
