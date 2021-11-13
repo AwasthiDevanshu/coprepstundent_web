@@ -3,7 +3,7 @@ class Constant
 {
     const BASE_URL = "https://backend.coprepedu.com/";
     const COMPANYID = 31;
-    const ANDROID_APP_LINK = "#";
+    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.vikalptestinstitute.app";
     const SUPPORT_EMAIL = "support@coprepedu.com";
     const COMPANYNAME = "Vikalp Test Series Institute";
     const DEFAULT_PAGE = "test.php";
