@@ -3,7 +3,7 @@ class Constant
 {
     const BASE_URL = "https://backend.coprepedu.com/";
     const COMPANYID = 9;
-    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.targetwithalok.app";
+    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.climaxacademy.app";
     const SUPPORT_EMAIL = "support@coprepedu.com";
     const COMPANYNAME = "Climax Academy";
     const DEFAULT_PAGE = "test.php";
