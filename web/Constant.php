@@ -2,12 +2,12 @@
 class Constant
 {
     const BASE_URL = "https://backend.coprepedu.com/";
-    const COMPANYID = 40;
-    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.rbsclasses.app";
-    const SUPPORT_EMAIL = "support@coprepedu.com";
-    const COMPANYNAME = "RSB Classes";
+    const COMPANYID = 1;
+    const ANDROID_APP_LINK = "https://play.google.com/store/apps/details?id=com.parikshaguru.app";
+    const SUPPORT_EMAIL = "parikshaguruonline@gmail.com";
+    const COMPANYNAME = "Pariksh Guru Online";
     const DEFAULT_PAGE = "test.php";
-    const LOGO_URL = "assets/images/Logo New.png";
+    const LOGO_URL = "assets/images/logo.png";
     const PAGE_MAP =  [
                         "index" => false,
                         "videopage" => false,
@@ -18,7 +18,7 @@ class Constant
                         "test" => true,
                         "testlist" => true,
                         "signup" => true,
-                        "watch" => true,
+                        "watch" => false,
                         "postpage" => true,
                         "testresult" => true,
                     ];

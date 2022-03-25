@@ -60,8 +60,7 @@ if (isset($_POST["submit"])) {
 	<!-- App CSS -->
 	<link id="theme-style" rel="stylesheet" href="assets/css/portal.css">
 
-</head>
-
+</head> 
 <body class="app app-login p-0">
 	<div class="row g-0 app-auth-wrapper">
 		<div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
